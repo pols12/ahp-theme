@@ -1,0 +1,55 @@
+@import 'normalize.css';
+@import 'compass';
+/*@import 'susyone';*/
+@import 'susy';
+
+/* ---- Typography ---- */
+
+$base-font-size: 16px;
+$base-line-height: 24px;
+
+@font-face {
+    font-family: 'icomoon';
+    src:url('../fonts/icomoon.eot');
+    src:url('../fonts/icomoon.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/icomoon.woff') format('woff'),
+        url('../fonts/icomoon.ttf') format('truetype'),
+        url('../fonts/icomoon.svg#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[data-icon]:before {
+    font-family: 'icomoon';
+    content: attr(data-icon);
+    speak: none;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ---- Grid ---- */
+
+@include border-box-sizing;
+$break: 40em, 12;
+
+$susy: (
+  gutters: 1/5,
+  column-width: 5em,
+  columns: 12,
+);
+
+/* @group ----- Colors ----- */
+
+$body-copy: #375e5d;
+$blue: #2b89d9;
+$red: #db6c36;
+    $dark-red: #CC4D28;
+    $bright-red: #ED3F0D;
+$yellow: #d9c414;
+$green: #21c900;
+
+
+/* @end */

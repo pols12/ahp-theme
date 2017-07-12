@@ -1,0 +1,59 @@
+<?php 
+$escape = $this->plugin('escapeHtml');
+$this->htmlElement('body')->appendAttribute('class', 'item resource show');
+$this->headScript()->prependFile($this->assetUrl('js/jquery.chocolat.min.js'));
+$this->headLink()->prependStylesheet($this->assetUrl('css/chocolat.css'));
+$subjects = $item->subjectValues();
+$objects = $item->objectValues();
+?>
+
+<script>
+    jQuery(document).ready(function(){
+        var inContainer = jQuery("#itemfiles-nav").Chocolat({
+        imageSize: "default",
+        loop: true,
+        fullscreen: true,
+        container: "#itemfiles"
+        }).data("chocolat");
+
+        if (typeof inContainer != "undefined") {
+            inContainer.api().open()
+        }
+    });
+</script>
+
+<?php echo $this->pageTitle($item->displayTitle(), 2); ?>
+
+<?php if ($item->media()): ?>
+<div id="itemfiles" style="width: 100%; height: 50vh; background: #E0E0E0; margin:auto;"></div>
+<div id="itemfiles-nav" class="media-list">
+    <?php foreach ($item->media() as $media): ?>
+        <a href="<?php echo $media->originalUrl(); ?>" class="media resource chocolat-image">
+            <img src="<?php echo $escape($media->thumbnailUrl('medium')); ?>" title="<?php echo $escape($media->displayTitle()); ?>">
+        </a>
+    <?php endforeach; ?>
+</div>
+<?php endif;
+
+echo $item->displayValues();
+
+$itemSets = $item->itemSets();
+if (count($itemSets) > 0): ?>
+<div class="property">
+    <h4><?php echo $this->translate('Item Sets'); ?></h4>
+    <?php foreach ($item->itemSets() as $itemSet): ?>
+    <div class="value"><a href="<?php echo $escape($itemSet->url()); ?>"><?php echo $itemSet->displayTitle(); ?></a></div>
+    <?php endforeach; ?>
+</div>
+<?php endif; ?>
+
+<?php if ($subjects || $objects): ?>
+<div id="item-linked" class="section property">
+    <h4><?php echo $this->translate('Linked Resources'); ?></h4>
+    <div class="value">
+    <?php echo $item->displayLinkedResources(); ?>
+    </div>
+</div>
+<?php endif; ?>
+
+<?php $this->trigger('view.show.after'); ?>
