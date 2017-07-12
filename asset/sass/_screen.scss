@@ -18,7 +18,7 @@ html {
 }
 
 body { 
-    background: url('../images/bg2.jpg') no-repeat center center fixed;
+    background: url('../img/bg2.jpg') no-repeat center center fixed;
     @include background-size(cover);
     font-size: $base-font-size;
     line-height: $base-line-height;
@@ -318,7 +318,7 @@ footer {
 }
 
 #navigation li:nth-of-type(4) {
-    background: url('../images/events.jpg') no-repeat center;
+    background: url('../img/events.jpg') no-repeat center;
     @include background-size(cover);    
     
     &:after {
@@ -327,7 +327,7 @@ footer {
 }
 
 #navigation li:nth-of-type(3) {
-    background: url('../images/people.jpg') no-repeat top;
+    background: url('../img/people.jpg') no-repeat top;
     @include background-size(cover);    
 
     &:after {
@@ -336,7 +336,7 @@ footer {
 }
 
 #navigation li:first-of-type {
-    background: url('../images/map.png') no-repeat center center;
+    background: url('../img/map.png') no-repeat center center;
     @include background-size(cover);
 
     &:after {
@@ -345,7 +345,7 @@ footer {
 }
 
 #navigation li:nth-of-type(2) {
-    background: url('../images/discover.jpg') no-repeat center center;
+    background: url('../img/discover.jpg') no-repeat center center;
     @include background-size(cover);    
 
     &:after {
@@ -414,7 +414,7 @@ footer {
 
 #featured-three {
     @include leading-border(1px, 1, $base-font-size, solid);
-    background: #fff url('../images/spencer.jpg') no-repeat center 25%;
+    background: #fff url('../img/spencer.jpg') no-repeat center 25%;
 }
 
 .featured {
@@ -1460,13 +1460,55 @@ nav ul {
 
 /* @group ----- Items/Show ----- */
 .property {
-	@include
+	@include clearfix;
+	margin-bottom: gutter(10);
+	@include span(3 of 4);
+	&>* {
+		display:inline;
+	}
+	
 	h4 {
-		@include span(1 of 4);
+		margin-top:0;
+		margin-bottom:0;
+		margin-right: 0.5em;
+		float: left;
+		&:after {
+			content: " :";
+		}
+		//@include span(1 of 5);
 	}
 	.value {
-		@include span(3 of 4);
+		display: block;
+		
+		/*
+		//@include span(4 of 5 last);
+		
+		&:last-child {
+			@include last;
+		  }*/
 	}
+}
+#item-linked {
+	h4 {
+		float:none;
+	}
+	table {
+		margin: 1em;
+		
+		&, tr, td, th {
+			border: 1px solid black;
+			padding: 0.1em 0.2em;
+		}
+	}
+	
+}
+.media-list {
+	@include span(1 of 4 last);
+}
+#itemfiles { //visionneuse Chocolat
+			 //à changer avec UniversalViewer
+	display:none;
+	margin-bottom:1em;
 }
 /*.items.show div[role=main] {
     @include padding-trailer(3);

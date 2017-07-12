@@ -21,16 +21,19 @@
 }
 
 /* ---- Grid ---- */
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 /* @group ----- Colors ----- */
 /* @end */
 @media screen {
   /* @group ----- Generic HTML elements ----- */
-  * {
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-  }
-
+  /** {
+      @include box-sizing(border-box);
+  }*/
   html, body {
     margin: 0;
     padding: 0;
@@ -42,7 +45,7 @@
   }
 
   body {
-    background: url("../images/bg2.jpg") no-repeat center center fixed;
+    background: url("../img/bg2.jpg") no-repeat center center fixed;
     -moz-background-size: cover;
     -o-background-size: cover;
     -webkit-background-size: cover;
@@ -344,7 +347,7 @@
   }
 
   #navigation li:nth-of-type(4) {
-    background: url("../images/events.jpg") no-repeat center;
+    background: url("../img/events.jpg") no-repeat center;
     -moz-background-size: cover;
     -o-background-size: cover;
     -webkit-background-size: cover;
@@ -359,7 +362,7 @@
   }
 
   #navigation li:nth-of-type(3) {
-    background: url("../images/people.jpg") no-repeat top;
+    background: url("../img/people.jpg") no-repeat top;
     -moz-background-size: cover;
     -o-background-size: cover;
     -webkit-background-size: cover;
@@ -374,7 +377,7 @@
   }
 
   #navigation li:first-of-type {
-    background: url("../images/map.png") no-repeat center center;
+    background: url("../img/map.png") no-repeat center center;
     -moz-background-size: cover;
     -o-background-size: cover;
     -webkit-background-size: cover;
@@ -389,7 +392,7 @@
   }
 
   #navigation li:nth-of-type(2) {
-    background: url("../images/discover.jpg") no-repeat center center;
+    background: url("../img/discover.jpg") no-repeat center center;
     -moz-background-size: cover;
     -o-background-size: cover;
     -webkit-background-size: cover;
@@ -472,7 +475,7 @@
     border-top-width: 0.0625em;
     border-top-style: solid;
     padding-top: 1.4375em;
-    background: #fff url("../images/spencer.jpg") no-repeat center 25%;
+    background: #fff url("../img/spencer.jpg") no-repeat center 25%;
   }
 
   .featured {
@@ -1489,15 +1492,56 @@
   }*/
   /* @end */
   /* @group ----- Items/Show ----- */
-  .property h4 {
-    width: 21.73913%;
-    float: left;
-    margin-right: 4.34783%;
-  }
-  .property .value {
+  .property {
+    overflow: hidden;
+    *zoom: 1;
+    margin-bottom: 1.69492%;
     width: 73.91304%;
     float: left;
     margin-right: 4.34783%;
+  }
+  .property > * {
+    display: inline;
+  }
+  .property h4 {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-right: 0.5em;
+    float: left;
+  }
+  .property h4:after {
+    content: " :";
+  }
+  .property .value {
+    display: block;
+    /*
+    //@include span(4 of 5 last);
+    
+    &:last-child {
+    	@include last;
+      }*/
+  }
+
+  #item-linked h4 {
+    float: none;
+  }
+  #item-linked table {
+    margin: 1em;
+  }
+  #item-linked table, #item-linked table tr, #item-linked table td, #item-linked table th {
+    border: 1px solid black;
+    padding: 0.1em 0.2em;
+  }
+
+  .media-list {
+    width: 21.73913%;
+    float: right;
+    margin-right: 0;
+  }
+
+  #itemfiles {
+    display: none;
+    margin-bottom: 1em;
   }
 
   /*.items.show div[role=main] {
