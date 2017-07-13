@@ -29,7 +29,13 @@ $objects = $item->objectValues();
 <div id="itemfiles-nav" class="media-list">
     <?php foreach ($item->media() as $media): ?>
         <a href="<?php echo $media->originalUrl(); ?>" class="media resource chocolat-image">
-            <img src="<?php echo $escape($media->thumbnailUrl('medium')); ?>" title="<?php echo $escape($media->displayTitle()); ?>">
+			<?php if($media->hasThumbnails()): ?>
+				<img src="<?php echo $escape($media->thumbnailUrl('medium')); ?>" title="<?php echo $escape($media->displayTitle()); ?>">
+			<?php else: ?>
+				<div class="media-element">
+				<?php echo $escape($media->displayTitle()); ?>
+				</div>
+			<?php endif; ?>
         </a>
     <?php endforeach; ?>
 </div>
