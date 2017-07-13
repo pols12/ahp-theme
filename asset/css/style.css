@@ -107,7 +107,9 @@
 
   div[role=main] {
     padding: 0 2.85714%;
-    clear: both;
+    width: 100%;
+    overflow: hidden;
+    *zoom: 1;
     background-color: #fff;
     float: left;
     -moz-box-shadow: #e7e7e7 0 10px 20px 0px;
@@ -1496,9 +1498,6 @@
     overflow: hidden;
     *zoom: 1;
     margin-bottom: 1.69492%;
-    width: 73.91304%;
-    float: left;
-    margin-right: 4.34783%;
   }
   .property > * {
     display: inline;
@@ -1525,18 +1524,15 @@
   #item-linked h4 {
     float: none;
   }
+  #item-linked .value {
+    overflow: auto;
+  }
   #item-linked table {
     margin: 1em;
   }
   #item-linked table, #item-linked table tr, #item-linked table td, #item-linked table th {
     border: 1px solid black;
     padding: 0.1em 0.2em;
-  }
-
-  .media-list {
-    width: 21.73913%;
-    float: right;
-    margin-right: 0;
   }
 
   #itemfiles {
@@ -1669,7 +1665,6 @@
     -moz-box-shadow: #BBB 0 0 50px;
     -webkit-box-shadow: #BBB 0 0 50px;
     box-shadow: #BBB 0 0 50px;
-    width: 100%;
   }
   div[role=main] > h2:first-of-type {
     text-align: center;
@@ -2088,6 +2083,18 @@
 
   /* @end */
   /* @group ----- Items/Show ----- */
+  .property {
+    width: 73.91304%;
+    float: left;
+    margin-right: 4.34783%;
+  }
+
+  .media-list {
+    width: 21.73913%;
+    float: right;
+    margin-right: 0;
+  }
+
   /*.exploration-answer div[role=main],
   .items.show div[role=main] {
       h1 {

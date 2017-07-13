@@ -11,7 +11,6 @@ body {
 
 div[role=main] { 
     @include box-shadow(#BBB 0 0 50px); 
-    width: 100%;
     
     & > h2:first-of-type {
         //padding: rhythm(3) gutter(6);
@@ -464,7 +463,12 @@ footer img {
 /* @end */
 
 /* @group ----- Items/Show ----- */
-
+.property {
+	@include span(3 of 4);
+}
+.media-list {
+	@include span(1 of 4 last);
+}
 /*.exploration-answer div[role=main],
 .items.show div[role=main] {
     h1 {
