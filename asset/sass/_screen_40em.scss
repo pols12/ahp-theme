@@ -173,17 +173,12 @@ footer img {
 /* @group ----- Navigation ----- */
 
 #navigation {
-    //float: right;
     clear: none;
-    //width: 100%;
     display: block;
     background-color: #FFF;
     text-align: left;
-    //margin: 0 0 rhythm(.5);
-    //position: absolute;
     top: 0;
     padding: 0;
-    //left: 0;
     
     a { 
         border-right: 1px solid #F7F7F7;
@@ -205,28 +200,18 @@ footer img {
         padding: 0;
         float:left;
     }
-	/*.home */
-    //position: relative;
-
     ul {
         @include trailing-border(0px, 0, $base-font-size, solid);
     }
     
     li { 
-    //    width: percentage(1/2);
-    //    height: rhythm(9);
         @include leading-border(0px, 0, $base-font-size, solid);
-        
-        &:after { 
-    //        height: rhythm(9); 
-        }
     }
     
     a {
         text-align: left;
         font-size: 1.5 * $base-font-size;
         line-height: $base-line-height;
-    //    border: 0;
         padding: 1em;
         width: 100%;
         height: 100%;
