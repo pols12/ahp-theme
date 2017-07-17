@@ -7,19 +7,18 @@ if (isset($itemSet)):
 	$query['item_set_id'] = $itemSet->id();
 endif;
 
- if (isset($itemSet)):
-     echo $this->pageTitle($itemSet->displayTitle(), 2); ?>
-    <div class="metadata">
-        <?php echo $itemSet->displayValues(); ?>
-    </div>
-    <?php echo $this->pageTitle($this->translate('Items'), 3);
- else:
-     echo $this->pageTitle($this->translate('Items'), 2);
- endif;
+if (isset($itemSet)):
+	echo $this->pageTitle($itemSet->displayTitle(), 2); ?>
+   <div class="metadata">
+	   <?php echo $itemSet->displayValues(); ?>
+   </div>
+   <?php echo $this->pageTitle($itemSet->itemCount()." ".$this->translate('Items'), 3);
+else:
+	echo $this->pageTitle($this->translate('Items'), 2);
+endif;
 
- echo $this->searchFilters();
- echo $this->hyperlink($this->translate('Advanced search'), $this->url('site/resource', ['controller' => 'item', 'action' => 'search'], ['query' => $query], true), ['class' => 'advanced-search']);
- echo $this->pagination(); ?>
+echo $this->searchFilters();
+echo $this->pagination(); ?>
 <ul class="resource-list">
     <?php foreach ($items as $item): ?>
     <li class="item resource">

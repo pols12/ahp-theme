@@ -122,55 +122,7 @@ header {
 
 /* @end */
 
-/* @group ----- Footer ----- */
-
-footer {
-    @include padding-leader(2);
-}
-
-footer .copy {
-    @include span(6 alpha);
-}
-
-footer .logos {
-    @include span(6 omega);
-}
-
-footer img {
-    margin: 0 0 rhythm() gutter(6);
-}
-
-/* @end */
-
-/* @group ----- Home ----- */
-
-#intro {
-    @include span(4 alpha);
-    @include trailing-border(0px, 0, $base-font-size, solid);
-}
-
-.home .news-item {
-    @include span(4);
-    @include padding-leader(.5);
-    
-    &:first-of-type { @include span(4 alpha); }
-    &:last-of-type { @include span(4 omega); }
-    
-    &:after {
-        content: "";
-        display: block;
-        width: 100%;
-        background-image: linear-gradient(0deg, rgba(255,255,255,1), rgba(255,255,255,0));
-        position: absolute;
-        z-index: 50;
-    }
-}
-
-
-
-/* @end */
-
-/* @group ----- Navigation ----- */
+/* @group ----- Header Navigation */
 
 #navigation {
     clear: none;
@@ -222,9 +174,66 @@ footer img {
     }
 }
 
+/* @end */
+
+/* @group ----- Footer ----- */
+
+footer {
+    @include padding-leader(2);
+}
+
+footer .copy {
+    @include span(6 alpha);
+}
+
+footer .logos {
+    @include span(6 omega);
+}
+
+footer img {
+    margin: 0 0 rhythm() gutter(6);
+}
+
+/* @end */
+
+/* @group ----- Home ----- */
+
+#intro {
+    @include span(4 alpha);
+    @include trailing-border(0px, 0, $base-font-size, solid);
+}
+
+.home .news-item {
+    @include span(4);
+    @include padding-leader(.5);
+    
+    &:first-of-type { @include span(4 alpha); }
+    &:last-of-type { @include span(4 omega); }
+    
+    &:after {
+        content: "";
+        display: block;
+        width: 100%;
+        background-image: linear-gradient(0deg, rgba(255,255,255,1), rgba(255,255,255,0));
+        position: absolute;
+        z-index: 50;
+    }
+}
+
 
 
 /* @end */
+
+/* @group ----- Navigation ----- */
+
+.advanced-search {
+	margin-left: span(2);
+}
+
+.pagination {
+	margin-left: span(1);
+}
+
 
 /* @group ----- Discover ----- */
 
