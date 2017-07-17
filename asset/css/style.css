@@ -88,6 +88,14 @@
     font-weight: 400;
   }
 
+  q:lang(fr) {
+    quotes: "« " " »";
+  }
+
+  q:lang(en) {
+    quotes: "“" "”";
+  }
+
   /* @end */
   /* @group ----- Global classes ----- */
   .screen-reader-text {
@@ -544,6 +552,19 @@
   }
 
   /* @end */
+  /* @group ----- Items – Common ----- */
+  /* Mise en forme des items où qu’ils soient. */
+  .field-name {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-right: 0.5em;
+    float: left;
+  }
+  .field-name:after {
+    content: " :";
+  }
+
+  /* @end Items – Common */
   /* @group ----- Items/Browse ----- */
   #no-results {
     padding: 0 2.85714%;
@@ -620,15 +641,6 @@
   }
   .property > * {
     display: inline;
-  }
-  .property h4 {
-    margin-top: 0;
-    margin-bottom: 0;
-    margin-right: 0.5em;
-    float: left;
-  }
-  .property h4:after {
-    content: " :";
   }
   .property .value {
     display: block;

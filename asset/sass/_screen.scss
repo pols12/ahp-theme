@@ -52,6 +52,9 @@ input {
     font-weight: 400;
 }
 
+q:lang(fr) { quotes: "« " " »"}
+q:lang(en) { quotes: "“" "”"}
+
 /* @end */
 
 /* @group ----- Global classes ----- */
@@ -476,6 +479,20 @@ footer {
 
 /* @end */
 
+/* @group ----- Items – Common ----- */
+/* Mise en forme des items où qu’ils soient. */
+
+.field-name {
+	margin-top:0;
+	margin-bottom:0;
+	margin-right: 0.5em;
+	float: left;
+	&:after {
+		content: " :";
+	}
+}
+
+/* @end Items – Common */
 
 /* @group ----- Items/Browse ----- */
 
@@ -556,15 +573,6 @@ footer {
 		display:inline;
 	}
 	
-	h4 {
-		margin-top:0;
-		margin-bottom:0;
-		margin-right: 0.5em;
-		float: left;
-		&:after {
-			content: " :";
-		}
-	}
 	.value {
 		display: block;
 	}

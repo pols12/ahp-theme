@@ -31,8 +31,14 @@ echo $this->pagination(); ?>
         >
         <?php endif; ?>
         <?php if ($date = $item->value('dcterms:date')): ?>
-        <div class="date"><?php echo $date; ?></div>
-        <?php endif; ?>
+				<h5 class="field-name">Date</h5> <div class="date"><?php echo $date; ?></div>
+        <?php endif;
+			if ($description = $item->value('dcterms:description')): ?>
+				<h5 class="field-name">Description</h5> <div class="value description"><?php echo $description; ?></div>
+        <?php endif;
+			if($incipit = $item->value('dm2e:incipit')): ?>
+				<h5 class="field-name">Incipit</h5> <q class="value description"><?php echo $incipit; ?></q>
+		<?php endif; ?>
     </li>
     <?php endforeach; ?>
 </ul>
