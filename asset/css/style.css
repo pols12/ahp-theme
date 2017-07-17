@@ -549,6 +549,9 @@
     padding: 0 2.85714%;
   }
 
+  .browse .resource-list {
+    padding: 0;
+  }
   .browse .resource-list .item {
     border-color: #e7e7e7;
     border-bottom-width: 0.0625em;
@@ -2107,6 +2110,9 @@
 
   /* @end */
   /* @group ----- Items/Browse ----- */
+  .browse .resource-list {
+    padding-left: 4.34783%;
+  }
   .browse .resource-list .item img {
     margin-right: 2.85714%;
   }

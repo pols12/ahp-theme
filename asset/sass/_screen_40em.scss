@@ -448,8 +448,9 @@ footer img {
 /* @group ----- Items/Browse ----- */
 
 //.items.browse .item {
-.browse .resource-list .item {
-    img {
+.browse .resource-list {
+	padding-left:gutter(4);
+    .item img {
         margin-right: gutter(6);
     }
 }
