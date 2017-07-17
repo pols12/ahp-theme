@@ -584,12 +584,12 @@ footer {
 	
 }
 .media-element {
-	padding: gutter() gutter() gutter() 2em;
-	margin: 0 gutter() 1em gutter();
+	padding: rhythm(.4) gutter() rhythm(.4) rhythm(1.5);
+	margin: 0 gutter() rhythm() gutter();
 	border: 1px solid black;
 	
-	background: URL('../../../../application/asset/thumbnails/default.png') no-repeat 3px center;
-	background-size: 1.5em;
+	background: URL('../../../../application/asset/thumbnails/default.png') no-repeat rhythm(0.2) center;
+	background-size: rhythm();
 }
 #itemfiles { //visionneuse Chocolat
 			 //à changer avec UniversalViewer

@@ -646,10 +646,10 @@
   }
 
   .media-element {
-    padding: 1.40845% 1.40845% 1.40845% 2em;
-    margin: 0 1.40845% 1em 1.40845%;
+    padding: 0.6em 1.40845% 0.6em 2.25em;
+    margin: 0 1.40845% 1.5em 1.40845%;
     border: 1px solid black;
-    background: URL("../../../../application/asset/thumbnails/default.png") no-repeat 3px center;
+    background: URL("../../../../application/asset/thumbnails/default.png") no-repeat 0.3em center;
     background-size: 1.5em;
   }
 
