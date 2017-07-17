@@ -88,6 +88,12 @@
     font-weight: 400;
   }
 
+  input, button, select {
+    font-size: 16px;
+    line-height: 24px;
+    margin: 0;
+  }
+
   q:lang(fr) {
     quotes: "« " " »";
   }
@@ -758,7 +764,42 @@
     left: 50%;
   }
 
-  /* @end */
+  /* @end Items/Show */
+  /* @group ----- Forms ----- */
+  #advanced-search .field .field-meta, #advanced-search .field .inputs {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 1.5em;
+  }
+  #advanced-search > div:last-child {
+    margin-bottom: 1.5em;
+  }
+
+  .field.multi-value .value:only-of-type .remove-value {
+    display: none;
+  }
+  .field.multi-value .remove-value {
+    background-color: #DDD;
+    color: #db6c36;
+    display: inline-block;
+    text-indent: -9999px;
+    position: relative;
+    width: 36px;
+    text-align: center;
+  }
+  .field.multi-value .remove-value:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 36px;
+    line-height: 36px;
+    text-indent: 0;
+  }
+  .field.multi-value .remove-value:hover {
+    color: #db6c36;
+  }
+
+  /* @end Forms */
   /*******************************************************************
   					GROUPES NON UTILISÉS
   ********************************************************************/
@@ -1803,7 +1844,7 @@
       }
   }*/
   /* @end */
-  /* @group ----- Header Navigation */
+  /* @group ----- Header Navigation ----- */
   #navigation {
     clear: none;
     display: block;
@@ -2179,7 +2220,68 @@
   #mobile-content {
       display: none;
   }*/
-  /* @end */
+  /* @end Items/Show */
+  /* @group ----- Forms ----- */
+  #advanced-search {
+    /*	padding: rhythm();
+    	&>div {
+    		overflow: visible;
+    		padding: gutter();
+    		margin: 0 0 rhythm();
+    	}*/
+  }
+  #advanced-search .field {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1.5em 0;
+  }
+  #advanced-search .field .field-meta {
+    width: 28.81356%;
+    float: left;
+    margin-right: 1.69492%;
+    text-align: right;
+    padding: 1.5em 1.5em 0 0;
+  }
+  #advanced-search .field .field-meta .field-description {
+    font-size: 14px;
+    line-height: 18px;
+    font-style: italic;
+  }
+  #advanced-search .field .inputs {
+    width: 69.49153%;
+    float: right;
+    margin-right: 0;
+  }
+  #advanced-search .field .inputs .value {
+    margin-bottom: 1.5em;
+  }
+  #advanced-search .field.required .field-meta:after {
+    content: "*";
+  }
+  #advanced-search input, #advanced-search button, #advanced-search select {
+    border: 1px solid #e7e7e7;
+  }
+  #advanced-search input, #advanced-search select, #advanced-search button {
+    border-radius: 0;
+    height: 2.25em;
+    margin: 0;
+    padding: 0.45em 1.40845%;
+  }
+  #advanced-search .remove-value {
+    margin-left: 1.40845%;
+    padding: 0.45em 16px;
+  }
+  #advanced-search #property-queries select.joiner {
+    width: 7em;
+    padding: 0.15em;
+  }
+  #advanced-search > div:last-child {
+    width: 69.49153%;
+    float: right;
+    margin-right: 0;
+  }
+
+  /* @end Forms */
   /* @group ----- Themes ----- */
   .search-result.item .description {
     width: auto;

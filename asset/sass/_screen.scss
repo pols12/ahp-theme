@@ -52,6 +52,12 @@ input {
     font-weight: 400;
 }
 
+input, button, select {
+	font-size: $base-font-size;
+	line-height: $base-line-height;
+	margin: 0;
+}
+
 q:lang(fr) { quotes: "« " " »"}
 q:lang(en) { quotes: "“" "”"}
 
@@ -390,7 +396,7 @@ footer {
 	border: 1px solid black;
 	border-radius:8px;
 	
-	.advanced-search {
+	.advanced-search { //Bouton "Filtrer"
 		display:block;
 		width: 5em;
 		margin: 0 auto rhythm(0.6) auto;
@@ -692,8 +698,50 @@ footer {
 #next-item {
     left: 50%;
 }
-/* @end */
+/* @end Items/Show */
 
+/* @group ----- Forms ----- */
+#advanced-search {
+	.field {
+		.field-meta, .inputs {
+			width: 100%;
+			text-align: left;
+			margin-bottom: rhythm();
+		}
+	}
+	&>div:last-child {
+		margin-bottom: rhythm();
+	}
+}
+.field.multi-value {
+	.value:only-of-type .remove-value {
+		display: none;
+	}
+	.remove-value {
+		background-color: #DDD;
+		color: $red;
+		display: inline-block;
+		text-indent: -9999px;
+		position: relative;
+		width: 1.5 * $base-line-height;
+		text-align: center;
+
+		&:before{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 1.5 * $base-line-height;
+			line-height: 1.5 * $base-line-height;
+			text-indent: 0;
+		}
+
+		&:hover {
+			color: $red;
+		}
+	}
+}
+/* @end Forms */
+							   
 /*******************************************************************
 					GROUPES NON UTILISÉS
 ********************************************************************/

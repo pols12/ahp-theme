@@ -122,7 +122,7 @@ header {
 
 /* @end */
 
-/* @group ----- Header Navigation */
+/* @group ----- Header Navigation ----- */
 
 #navigation {
     clear: none;
@@ -500,7 +500,70 @@ footer img {
 #mobile-content {
     display: none;
 }*/
-/* @end */
+/* @end Items/Show */
+
+/* @group ----- Forms ----- */
+#advanced-search {
+/*	padding: rhythm();
+	&>div {
+		overflow: visible;
+		padding: gutter();
+		margin: 0 0 rhythm();
+	}*/
+
+	.field {
+		display: flex;
+		flex-wrap: wrap;
+		margin: rhythm() 0;
+
+		.field-meta {
+			@include span(3 of 10);
+			text-align: right;
+			padding: rhythm() rhythm() 0 0;
+		}
+
+		.field-meta .field-description {
+			font-size: .875 * $base-font-size;
+			line-height: .75 * $base-line-height;
+			font-style: italic;
+		}
+
+		.inputs {
+			@include span(7 of 10 last);
+			
+			.value {
+				margin-bottom: rhythm();
+			}
+		}
+		&.required .field-meta:after {
+			content: "*";
+		}
+	}
+
+	input, button, select {
+		border: 1px solid #e7e7e7;
+	}
+	input, select, button {
+		//À dupliquer pour #search-form
+		border-radius: 0;
+		height: rhythm(1.5);
+		margin: 0;
+		padding: rhythm(0.3) gutter();
+	}
+	.remove-value {
+		margin-left: gutter();
+		padding: rhythm(0.3) $base-font-size;
+	}
+	#property-queries select.joiner {
+		width: 7em;
+		padding: rhythm(0.1);
+	}
+	
+	&>div:last-child {
+		@include span(7 of 10 last);
+	}
+}
+/* @end Forms */
 
 /* @group ----- Themes ----- */
 
