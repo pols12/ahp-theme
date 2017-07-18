@@ -77,7 +77,7 @@ a.button {
 }
 
 div[role=main] {
-	padding: 0 gutter(6);
+	padding: 0 gutter(6) rhythm();
 	width: 100%;
 	@include clearfix;
     background-color: #fff;
