@@ -468,10 +468,26 @@ footer {
 
 /* @end */
 
-/* @group ----- Items – Common ----- */
-/* Mise en forme des items où qu’ils soient. */
+/* @group ----- Items – Properties ----- */
+/* Mise en forme des propriétés des items, où qu’ils soient. */
 
-.field-name {
+.property, .filter {
+	@include clearfix;
+	margin-bottom: rhythm();
+	
+	&>* {
+		display:inline;
+	}
+	
+	.value {
+		display: block;
+	}
+}
+
+.field-name, .filter-label {
+	display: block;
+	font-weight: 800;
+	
 	margin-top:0;
 	margin-bottom:0;
 	margin-right: 0.5em;
@@ -554,18 +570,6 @@ footer {
 /* @end */
 
 /* @group ----- Items/Show ----- */
-.property {
-	@include clearfix;
-	margin-bottom: gutter(10);
-	
-	&>* {
-		display:inline;
-	}
-	
-	.value {
-		display: block;
-	}
-}
 #item-linked {
 	h4 {
 		float:none;

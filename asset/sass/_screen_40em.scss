@@ -445,6 +445,15 @@ footer img {
 
 /* @end */
 
+/* @group ----- Items – Properties ----- */
+/* Mise en forme des propriétés des items, où qu’ils soient. */
+
+.property {
+	@include span(3 of 4);
+}
+
+/* @end Items – Common */
+
 /* @group ----- Items/Browse ----- */
 
 //.items.browse .item {
@@ -458,9 +467,7 @@ footer img {
 /* @end */
 
 /* @group ----- Items/Show ----- */
-.property {
-	@include span(3 of 4);
-}
+
 .media-list {
 	@include span(1 of 4 last);
 }

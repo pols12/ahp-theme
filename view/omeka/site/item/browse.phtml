@@ -21,11 +21,11 @@ $filterBtn=(string) $this->hyperlink($this->translate('Filter'),
 			$this->url('site/resource',
 				['controller' => 'item', 'action' => 'search'],
 				['query' => $query], true),
-			['class' => 'advanced-search button']);
-
-echo $this->searchFilters(); echo $filterBtn;?>
-
-<?= $this->pagination(); ?>
+			['class' => 'advanced-search button']); 
+echo
+$this->searchFilters()
+.$filterBtn
+.$this->pagination(); ?>
 <ul class="resource-list">
     <?php foreach ($items as $item): ?>
     <li class="item resource">
