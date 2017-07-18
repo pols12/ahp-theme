@@ -17,7 +17,15 @@ else:
 	echo $this->pageTitle($this->translate('Items'), 2);
 endif;
 
-echo $this->searchFilters();
+echo $this->searchFilters(); ?>
+<nav class="pagination" role="navigation">
+<?php
+if ($itemSet)
+	echo $this->hyperlink($this->translate('Filter'),
+			$this->url('site/resource',
+				['controller' => 'item', 'action' => 'search'],
+				['query' => $query], true),
+			['class' => 'advanced-search button']);
 echo $this->pagination(); ?>
 <ul class="resource-list">
     <?php foreach ($items as $item): ?>
