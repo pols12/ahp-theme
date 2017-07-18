@@ -17,15 +17,16 @@ else:
 	echo $this->pageTitle($this->translate('Items'), 2);
 endif;
 
-echo $this->searchFilters(); ?>
-<nav class="pagination" role="navigation">
-<?php
-if ($itemSet)
-	echo $this->hyperlink($this->translate('Filter'),
+$filterBtn=(string) $this->hyperlink($this->translate('Filter'),
 			$this->url('site/resource',
 				['controller' => 'item', 'action' => 'search'],
 				['query' => $query], true),
 			['class' => 'advanced-search button']);
+
+echo $this->searchFilters(); ?>
+<nav class="pagination" role="navigation">
+<?php
+echo $filterBtn;
 echo $this->pagination(); ?>
 <ul class="resource-list">
     <?php foreach ($items as $item): ?>
@@ -50,5 +51,8 @@ echo $this->pagination(); ?>
     </li>
     <?php endforeach; ?>
 </ul>
-<?php echo $this->pagination(); ?>
+<nav class="pagination" role="navigation">
+<?=
+$filterBtn
+.$this->pagination() ?>
 <?php $this->trigger('view.browse.after'); ?>
