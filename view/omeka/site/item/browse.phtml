@@ -23,11 +23,9 @@ $filterBtn=(string) $this->hyperlink($this->translate('Filter'),
 				['query' => $query], true),
 			['class' => 'advanced-search button']);
 
-echo $this->searchFilters(); ?>
-<nav class="pagination" role="navigation">
-<?php
-echo $filterBtn;
-echo $this->pagination(); ?>
+echo $this->searchFilters(); echo $filterBtn;?>
+
+<?= $this->pagination(); ?>
 <ul class="resource-list">
     <?php foreach ($items as $item): ?>
     <li class="item resource">
@@ -51,7 +49,6 @@ echo $this->pagination(); ?>
     </li>
     <?php endforeach; ?>
 </ul>
-<nav class="pagination" role="navigation">
 <?=
 $filterBtn
 .$this->pagination() ?>
