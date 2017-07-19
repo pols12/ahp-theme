@@ -1,0 +1,31 @@
+<?php $this->htmlElement('body')->appendAttribute('class', 'media resource show');
+
+if('HTML' == $media->ingesterLabel()) {
+	// Mise en forme des transcriptions générés par LateXML par Scott Walter
+	
+	$this->headScript()->prependScript(
+			'MathJax.Hub.Config({ MMLorHTML: { prefer: { Firefox: "MML" } }  });',
+			'text/x-mathjax-config');
+	$this->headScript()->appendFile(
+			'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML');
+	
+	$this->headLink()->appendStylesheet($this->assetUrl('css/latex/LaTeXML.css'));
+	$this->headLink()->appendStylesheet($this->assetUrl('css/latex/ltx-amsart.css'));
+	$this->headLink()->appendStylesheet($this->assetUrl('css/latex/ltx-amsart-hpp.css'));
+	$this->headLink()->appendStylesheet($this->assetUrl('css/latex/ltx-article.css'));
+	$this->headLink()->appendStylesheet($this->assetUrl('css/latex/ltx-ulem.css'));
+}
+
+echo $this->pageTitle($media->displayTitle(), 2); ?>
+<h3><?php echo $this->translate('Media'); ?></h3>
+<nav class="back">
+	<?= $this->translate('Part of item (')
+		.$media->item()->link( $media->item()->displayTitle() )
+		.')'; ?>
+</nav>
+<?php
+$this->trigger('view.show.before'); 
+echo $this->pageTitle($this->translate('Content'), 4),
+	$media->render(),
+	$media->displayValues();
+$this->trigger('view.show.after');

@@ -740,6 +740,18 @@
   }
 
   /* @end Items/Show */
+  /* @group ----- Media/Show ----- */
+  .media #content nav.back {
+    margin: -0.75em 1.40845% 1.5em;
+  }
+  .media #content .media-render {
+    border: 1px solid lightgrey;
+    padding: 1.5em 1.40845%;
+    border-radius: 5px;
+    margin-bottom: 1.5em;
+  }
+
+  /* @end Media/Show */
   /* @group ----- Forms ----- */
   #advanced-search .field .field-meta, #advanced-search .field .inputs {
     width: 100%;

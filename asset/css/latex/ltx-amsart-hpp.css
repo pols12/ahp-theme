@@ -1,0 +1,16 @@
+/* modifications of ltx-amsart.css by sw for hpp, 2015-04-25 */
+.ltx_title_document { display:none; }
+.ltx_title_section {
+    font-family:serif; font-weight:normal; font-variant:small-caps; font-size: 120%;
+    text-align:left; }
+.ltx_authors { display:none; }
+.ltx_bib_cited { display:none; }
+.ltx_bib_year:after { content:"."; }
+.ltx_bib_title { font-style:normal; }
+.ltx_title +.ltx_para > .ltx_p {text-indent:0em; }
+
+/* mods of ltx-article.css */
+.ltx_date { display:none; }
+
+/* first p in para does not get indented */
+.ltx_para > .ltx_p:first-child { text-indent:0em; }

@@ -687,6 +687,22 @@ footer {
 }
 /* @end Items/Show */
 
+/* @group ----- Media/Show ----- */
+
+.media #content {
+	nav.back {
+		margin: -1*rhythm(0.5) gutter() rhythm();
+	}
+	.media-render {
+		border: 1px solid lightgrey;
+		padding: rhythm() gutter();
+		border-radius: 5px;
+		margin-bottom: rhythm();
+	}
+}
+
+/* @end Media/Show */
+
 /* @group ----- Forms ----- */
 #advanced-search {
 	.field {
