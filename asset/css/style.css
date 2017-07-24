@@ -544,6 +544,10 @@
   .property .value, .filter .value {
     display: block;
   }
+  .property .value img, .filter .value img {
+    height: 16px;
+    vertical-align: sub;
+  }
 
   .field-name, .filter-label {
     display: block;

@@ -481,6 +481,10 @@ footer {
 	
 	.value {
 		display: block;
+		img {
+			height: $base-font-size;
+			vertical-align: sub;
+		}
 	}
 }
 
