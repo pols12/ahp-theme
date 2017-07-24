@@ -24,8 +24,15 @@ $objects = $item->objectValues();
 
 <?php echo $this->pageTitle($item->displayTitle(), 2); ?>
 
-<?php if ($item->media()): 
-	    echo $this->universalViewer($item);?>
+<?php
+$hasViewableMedia = false;
+foreach ($item->media() as $media)
+	$hasViewableMedia = $hasViewableMedia or $media->hasThumbnails();
+
+if ($hasViewableMedia):
+	    echo $this->universalViewer($item);
+endif;
+if($item->media()): ?>
 <div id="itemfiles" style="width: 100%; height: 50vh; background: #E0E0E0; margin:auto;"></div>
 <div id="itemfiles-nav" class="media-list">
     <?php foreach ($item->media() as $media): ?>
