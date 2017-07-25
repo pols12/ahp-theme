@@ -599,10 +599,20 @@ footer {
 	background: URL('../../../../application/asset/thumbnails/default.png') no-repeat rhythm(0.2) center;
 	background-size: rhythm();
 }
-#itemfiles { //visionneuse Chocolat
-			 //à changer avec UniversalViewer
-	display:none;
-	margin-bottom:1em;
+#itemfiles { //Pour chocolat. Nécessaire à UV ???
+	width: 100%;
+	height: 50vh;
+	background: #E0E0E0;
+	margin:auto;
+}
+.uv {
+	margin-bottom: rhythm();
+	//display:none;
+}
+.masked { //UniversalViewer est .masked au chargement
+	/*display: none;*/
+	margin-left: -9999px !important;
+	position: absolute;
 }
 /*.items.show div[role=main] {
     @include padding-trailer(3);

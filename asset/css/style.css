@@ -654,8 +654,20 @@
   }
 
   #itemfiles {
-    display: none;
-    margin-bottom: 1em;
+    width: 100%;
+    height: 50vh;
+    background: #E0E0E0;
+    margin: auto;
+  }
+
+  .uv {
+    margin-bottom: 1.5em;
+  }
+
+  .masked {
+    /*display: none;*/
+    margin-left: -9999px !important;
+    position: absolute;
   }
 
   /*.items.show div[role=main] {
