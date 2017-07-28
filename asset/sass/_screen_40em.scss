@@ -124,6 +124,10 @@ header {
 
 /* @group ----- Header Navigation ----- */
 
+.hamburger, .cross {
+	display: none;
+}
+
 #navigation {
     clear: none;
     display: block;
@@ -144,6 +148,7 @@ header {
         margin: 0;
         overflow: auto;
         border-bottom: 1px solid #F7F7F7;
+		display: initial;
     }
     
     li { 
@@ -151,6 +156,7 @@ header {
         border-bottom: 0;
         padding: 0;
         float:left;
+		width: initial;
     }
     ul {
         @include trailing-border(0px, 0, $base-font-size, solid);

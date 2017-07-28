@@ -7,6 +7,7 @@ $this->headTitle($this->setting('installation_title', 'Omeka S'))->setSeparator(
 $this->headLink()->prependStylesheet($this->assetUrl('css/style.css'));
 $this->headLink()->prependStylesheet($this->assetUrl('css/iconfonts.css', 'Omeka'));
 $this->headScript()->prependFile($this->assetUrl('js/default.js'));
+$this->headScript()->prependFile($this->assetUrl('js/menu.js'));
 $this->headScript()->prependFile($this->assetUrl('vendor/jquery/jquery.min.js', 'Omeka'));
 $this->trigger('view.layout');
 $title = $this->pageTitle($site->title());
@@ -42,6 +43,8 @@ endif;
 			</div>
 
             <nav id="navigation">
+				<button class="hamburger">&#9776;</button>
+				<button class="cross">&#735;</button>
             <?php
             echo $site->publicNav()->menu()->renderMenu(null, [
                 'maxDepth' => 0//$this->themeSetting('nav_depth') - 1

@@ -209,14 +209,43 @@ nav ul {
     padding-left: 0;
 }
 
+.hamburger{
+	background:none;
+	position:absolute;
+	left:0;
+	line-height:45px;
+	padding:5px 15px 0px 15px;
+	color:#999;
+	border:0;
+	font-size:1.4em;
+	font-weight:bold;
+	cursor:pointer;
+	outline:none;
+	z-index:1000;
+}
+.cross{
+	background:none;
+	position:absolute;
+	left:0;
+	padding:7px 15px 0px 15px;
+	color:#999;
+	border:0;
+	font-size:3em;
+	line-height:65px;
+	font-weight:bold;
+	cursor:pointer;
+	outline:none;
+	z-index:1000;
+}
+
 #navigation {
     clear: both;
     background-color: #fff;
     @include leading-border(1px, 0, $base-font-size, solid);
     border-color: #e7e7e7;
-    display: none;
     text-align: left;
     margin: 0;
+	min-height: rhythm();
 	
     h2 { @include adjust-font-size-to(16px); }
     
@@ -224,9 +253,11 @@ nav ul {
         padding: 0;
         width: 100%;
         margin: 0;
+		display:none; //Caché par défaut sur les petits écrans
     }
     
     li {
+		width:100%;
         display: block;
         border-color: #e7e7e7;
         @include trailing-border(1px, .25, $base-font-size, solid);
