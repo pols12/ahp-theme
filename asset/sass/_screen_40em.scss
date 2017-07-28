@@ -72,7 +72,7 @@ header {
     
     input[type=text] { 
         width: 60%;
-        margin: rhythm(.75) 0;
+        margin: rhythm(.75) 0 0;
         border: 1px solid #e7e7e7;
         font-size: $base-font-size;
         line-height: $base-line-height;
@@ -82,7 +82,7 @@ header {
     
     button[type=submit] {
         width: 36%;
-        margin: rhythm(.75) gutter(6) rhythm(.75) 0;
+        margin: rhythm(.75) gutter(6) 0 0;
         font-size: $base-font-size;
         line-height: $base-line-height;
         float:none;

@@ -209,7 +209,6 @@
 
 @media screen {
   #search-form {
-    display: none;
     padding: 0.75em 2%;
     border-color: #e7e7e7;
     border-top-width: 0.0625em;
@@ -238,6 +237,12 @@
     background-color: #21c900;
     color: #fff;
     border: 0;
+  }
+  #search-form .advanced-search {
+    font-size: 12.8px;
+    float: left;
+    width: 100%;
+    margin: 0.45em 0 0;
   }
 
   /* @end Header */
@@ -1800,7 +1805,7 @@
   }
   #search-form input[type=text] {
     width: 60%;
-    margin: 1.125em 0;
+    margin: 1.125em 0 0;
     border: 1px solid #e7e7e7;
     font-size: 16px;
     line-height: 24px;
@@ -1809,7 +1814,7 @@
   }
   #search-form button[type=submit] {
     width: 36%;
-    margin: 1.125em 2.85714% 1.125em 0;
+    margin: 1.125em 2.85714% 0 0;
     font-size: 16px;
     line-height: 24px;
     float: none;

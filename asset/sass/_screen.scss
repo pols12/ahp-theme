@@ -163,7 +163,7 @@ header {
 }
 
 #search-form {
-    display: none;
+    //display: none;
     padding: rhythm(.5) 2%;
     border-color: #e7e7e7;
     @include leading-border(1px, .5, $base-font-size, solid);
@@ -191,6 +191,13 @@ header {
         color: #fff;
         border: 0;
     }
+	
+	.advanced-search {
+		font-size: 0.8*$base-font-size;
+		float:left;
+		width:100%;
+		margin: rhythm(0.3) 0 0;
+	}
 }
 
 /* @end Header */
