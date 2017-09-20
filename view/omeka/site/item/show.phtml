@@ -32,9 +32,10 @@ if($item->media()): ?>
 </div>
 <script type="text/javascript">
 jQuery(document).ready(function(){
-	jQuery('#itemfiles-nav a').on("click", function(event){
+	jQuery('#itemfiles-nav a:has("img")').on("click", function(event){
 		jQuery('.uv').removeClass('masked');
 		jQuery('.uv').show();
+		jQuery(document).scrollTop(jQuery('.uv').offset().top);
 		event.preventDefault();
 	});
 });</script>
