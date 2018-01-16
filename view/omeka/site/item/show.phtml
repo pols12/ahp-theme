@@ -53,11 +53,14 @@ if (count($itemSets) > 0): ?>
 </div>
 <?php endif; ?>
 
-<?php if ($subjects || $objects): ?>
+<?php if ($subjects || $objects):
+	$page = $this->params()->fromQuery('page', 1);
+	$property = $this->params()->fromQuery('property');
+	$subjectValues = $item->displaySubjectValues($page, 25, $property); ?>
 <div id="item-linked" class="section property">
     <h4><?php echo $this->translate('Linked Resources'); ?></h4>
     <div class="value">
-    <?php echo $item->displayLinkedResources(); ?>
+    <?= $subjectValues ?>
     </div>
 </div>
 <?php endif; ?>
