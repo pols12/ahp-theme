@@ -797,7 +797,8 @@
   .media #content nav.back {
     margin: -0.75em 1.40845% 1.5em;
   }
-  .media #content .media-render {
+
+  .media-render {
     border: 1px solid lightgrey;
     padding: 1.5em 1.40845%;
     border-radius: 5px;
