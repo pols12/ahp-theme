@@ -1,66 +1,72 @@
 <?php 
 $escape = $this->plugin('escapeHtml');
 $this->htmlElement('body')->appendAttribute('class', 'item resource show');
-$subjects = $item->subjectValues();
-$objects = $item->objectValues();
+$embedMedia = $this->siteSetting('item_media_embed', false);
+$itemMedia = $item->media();
 ?>
 
 <?php echo $this->pageTitle($item->displayTitle(), 2); ?>
 
-<?php
-$hasViewableMedia = false;
-foreach ($item->media() as $media)
-	$hasViewableMedia = ($hasViewableMedia or $media->hasThumbnails());
-
-if ($hasViewableMedia):
-	    echo $this->universalViewer($item, ['class'=>'masked']);
-endif;
-if($item->media()): ?>
-<div id="itemfiles" class="masked"></div>
-<div id="itemfiles-nav" class="media-list">
-    <?php foreach ($item->media() as $media): ?>
-        <a href="<?php echo $media->siteUrl(); ?>" class="media resource chocolat-image">
-			<?php if($media->hasThumbnails()): ?>
-				<img src="<?php echo $escape($media->thumbnailUrl('medium')); ?>" title="<?php echo $escape($media->displayTitle()); ?>">
-			<?php else: ?>
-				<div class="media-element">
-				<?php echo $escape($media->displayTitle()); ?>
-				</div>
-			<?php endif; ?>
-        </a>
-    <?php endforeach; ?>
-</div>
-<script type="text/javascript">
-jQuery(document).ready(function(){
-	jQuery('#itemfiles-nav a:has("img")').on("click", function(event){
-		jQuery('.uv').removeClass('masked');
-		jQuery('.uv').show();
-		jQuery(document).scrollTop(jQuery('.uv').offset().top);
-		event.preventDefault();
-	});
-});</script>
-<?php endif;
-
-echo $item->displayValues();
-
-$itemSets = $item->itemSets();
-if (count($itemSets) > 0): ?>
+<?php foreach ($itemMedia as $media) {
+	if($hasViewableMedia = $media->hasThumbnails()) {
+		echo $this->universalViewer($item, ['class'=>'masked']);
+		break;
+	}
+} ?>
+<?php $this->trigger('view.show.before'); ?>
+<?php if ($embedMedia && $itemMedia): ?>
+	<div id="itemfiles" class="masked"></div>
+	<div id="itemfiles-nav" class="media-list">
+		<?php foreach ($itemMedia as $media): ?>
+			<a href="<?php echo $media->siteUrl(); ?>" class="media resource chocolat-image">
+				<?php if($media->hasThumbnails()): ?>
+					<img src="<?php echo $escape($media->thumbnailUrl('medium')); ?>" title="<?php echo $escape($media->displayTitle()); ?>">
+				<?php else: ?>
+					<div class="media-element">
+					<?php echo $escape($media->displayTitle()); ?>
+					</div>
+				<?php endif; ?>
+			</a>
+		<?php endforeach; ?>
+	</div>
+	<script type="text/javascript">
+	jQuery(document).ready(function(){
+		jQuery('#itemfiles-nav a:has("img")').on("click", function(event){
+			jQuery('.uv').removeClass('masked');
+			jQuery('.uv').show();
+			jQuery(document).scrollTop(jQuery('.uv').offset().top);
+			event.preventDefault();
+		});
+	});</script>
+<?php endif; ?>
+<?php echo $item->displayValues(); ?>
 <div class="property">
-    <h4><?php echo $this->translate('Item Sets'); ?></h4>
-    <?php foreach ($item->itemSets() as $itemSet): ?>
-    <div class="value"><a href="<?php echo $escape($itemSet->url()); ?>"><?php echo $itemSet->displayTitle(); ?></a></div>
+	<?php $itemSets = $item->itemSets(); ?>
+	<?php if (count($itemSets) > 0): ?>
+		<h4><?php echo $this->translate('Item sets'); ?></h4>
+		<?php foreach ($item->itemSets() as $itemSet): ?>
+		<div class="value"><a href="<?php echo $escape($itemSet->url()); ?>"><?php echo $itemSet->displayTitle(); ?></a></div>
+		<?php endforeach; ?>
+	<?php endif; ?>
+</div>
+<?php if (!$embedMedia && $itemMedia): ?>
+<div class="media-list">
+    <?php foreach ($itemMedia as $media): ?>
+        <?php echo $media->linkPretty(); ?>
     <?php endforeach; ?>
 </div>
 <?php endif; ?>
 
-<?php if ($subjects || $objects):
+<?php
 	$page = $this->params()->fromQuery('page', 1);
 	$property = $this->params()->fromQuery('property');
-	$subjectValues = $item->displaySubjectValues($page, 25, $property); ?>
+	$subjectValues = $item->displaySubjectValues($page, 25, $property);
+?>
+<?php if ($subjectValues): ?>
 <div id="item-linked" class="section property">
-    <h4><?php echo $this->translate('Linked Resources'); ?></h4>
+    <h3><?php echo $this->translate('Linked resources'); ?></h3>
     <div class="value">
-    <?= $subjectValues ?>
+    <?php echo $subjectValues; ?>
     </div>
 </div>
 <?php endif; ?>
