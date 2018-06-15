@@ -292,7 +292,7 @@ nav ul {
             height: 100%;
 			color: #fff; 
 			position: relative;
-			z-index: 100;
+			z-index: 4;
 			text-shadow: 0 0 20px #333;
 			text-align: center;
 			
@@ -308,7 +308,7 @@ nav ul {
 			top: 0;
 			left: 0;
 			bottom: 0;
-			z-index: 10;
+			z-index: 2;
 			content: "";
 			display: block;
 			width: 100%;
@@ -612,7 +612,7 @@ footer {
 /* @end */
 
 /* @group ----- Items/Show ----- */
-#item-linked {
+#item-linked, .resource-list {
 	h4 {
 		float:none;
 	}
