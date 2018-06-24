@@ -1,0 +1,25 @@
+<?php
+use Omeka\Api\Representation\ItemRepresentation;
+use Omeka\Api\Representation\ValueRepresentation;
+$escape = $this->plugin('escapeHtml');
+/* @var $resource ItemRepresentation */ 
+
+$sender = $resource->value("dm2e:writer") instanceof ValueRepresentation
+		? $resource->value("dm2e:writer")->valueResource()->displayTitle()
+		: $resource->value("dm2e:writer");
+$recipient = $resource->value("gndo:addressee") instanceof ValueRepresentation
+		? $resource->value("gndo:addressee")->valueResource()->displayTitle()
+		: $resource->value("gndo:addressee");
+?>
+
+<tr class="<?= $resource->resourceName(); ?> resource">
+	<td><?= $sender ?></td>
+	<td><?= $recipient ?></td>
+	<td><?= $resource->value("dcterms:date"); ?></td>
+	<td><?= $resource->link($resource->value("dm2e:incipit")); ?></td>
+    <?php if ($description = $resource->displayDescription()): ?>
+        <div class="description">
+            <?php echo $description; ?>
+        </div>
+    <?php endif; ?>
+</tr>

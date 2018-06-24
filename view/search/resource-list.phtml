@@ -1,17 +1,18 @@
-<?php $results = $response->getResults($resourceName); ?>
+<?php $results = $response->getResults($resourceName);
+$form=$this->searchForm()->getForm();
+$ehpForm = get_class($form) == \EhpSearchForm\Form\LetterForm::class
+		? 'letter'
+		: 'biblio'; ?>
 <?php if (!empty($results)): ?>
     <h3><?php echo $title; ?></h3>
     <div class="resource-list"><table>
 		<thead><tr>
-			<th><?= $this->translate('From'); ?></th>
-			<th><?= $this->translate('To'); ?></th>
-			<th><?= $this->translate('Date'); ?></th>
-			<th><?= $this->translate('Incipit'); ?></th>
+			<?= $this->partial("search/$ehpForm-list") ?>
 		</tr></thead>
 		<tbody>
         <?php foreach ($results as $result): ?>
             <?php $resource = $this->api()->read($resourceName, $result['id'])->getContent(); ?>
-            <?php echo $this->partial('search/resource', ['resource' => $resource,
+            <?php echo $this->partial("search/$ehpForm", ['resource' => $resource,
                                                           'site' => $site,
                                                           'tag' => 'div']); ?>
         <?php endforeach; ?>

@@ -1,0 +1,27 @@
+<?php
+use Omeka\Api\Representation\ItemRepresentation;
+use Omeka\Api\Representation\ValueRepresentation;
+$escape = $this->plugin('escapeHtml');
+/* @var $resource ItemRepresentation */ 
+
+//TODO
+$journal = '';
+if( ($issueVal = $resource->value('dcterms:isPartOf'))
+		instanceof ValueRepresentation
+	&& ($journalVal = $issueVal->valueResource()->value('dcterms:isPartOf'))
+		instanceof ValueRepresentation )
+{
+	$journal = $journalVal->valueResource()->displayTitle();
+}
+
+?>
+
+<tr class="<?= $resource->resourceName(); ?> resource">
+	<td><?= $resource->value("dcterms:issued"); ?></td>
+	<td><?= $resource->link($resource->value("dcterms:title")); ?></td>
+    <?php if ($description = $resource->displayDescription()): ?>
+        <div class="description">
+            <?php echo $description; ?>
+        </div>
+    <?php endif; ?>
+</tr>
