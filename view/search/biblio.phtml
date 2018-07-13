@@ -2,26 +2,26 @@
 use Omeka\Api\Representation\ItemRepresentation;
 use Omeka\Api\Representation\ValueRepresentation;
 $escape = $this->plugin('escapeHtml');
+$link = $this->plugin('hyperlink');
 /* @var $resource ItemRepresentation */ 
 
-//TODO
-$journal = '';
-if( ($issueVal = $resource->value('dcterms:isPartOf'))
-		instanceof ValueRepresentation
-	&& ($journalVal = $issueVal->valueResource()->value('dcterms:isPartOf'))
-		instanceof ValueRepresentation )
-{
-	$journal = $journalVal->valueResource()->displayTitle();
-}
+$author = ($valueCreator = $resource->value("dcterms:creator")) instanceof ValueRepresentation
+		? $link($escape($valueCreator->valueResource()->displayTitle()),
+				$valueCreator->valueResource()->url(), [])
+		: $valueCreator;
 
+$journal = ( ($issueVal = $resource->value('dcterms:isPartOf'))
+				instanceof ValueRepresentation
+			&& ($journalVal = $issueVal->valueResource()->value('dcterms:isPartOf'))
+				instanceof ValueRepresentation
+			)
+		? $journalVal->valueResource()->displayTitle()
+		: '';
 ?>
 
 <tr class="<?= $resource->resourceName(); ?> resource">
-	<td><?= $resource->value("dcterms:issued"); ?></td>
+	<td><?= $author ?></td>
 	<td><?= $resource->link($resource->value("dcterms:title")); ?></td>
-    <?php if ($description = $resource->displayDescription()): ?>
-        <div class="description">
-            <?php echo $description; ?>
-        </div>
-    <?php endif; ?>
+	<td><?= $resource->value("dcterms:issued"); ?></td>
+	<td><?= $journal; ?></td>
 </tr>
