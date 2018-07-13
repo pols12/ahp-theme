@@ -18,9 +18,4 @@ $recipient = $resource->value($settings['addressee']) instanceof ValueRepresenta
 	<td><?= $recipient ?></td>
 	<td><?= $resource->value($settings['date']); ?></td>
 	<td><?= $resource->link($resource->value($settings['incipit'])); ?></td>
-    <?php if ($description = $resource->displayDescription()): ?>
-        <div class="description">
-            <?php echo $description; ?>
-        </div>
-    <?php endif; ?>
 </tr>
