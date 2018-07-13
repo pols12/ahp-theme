@@ -3,16 +3,18 @@ use Omeka\Api\Representation\ItemRepresentation;
 use Omeka\Api\Representation\ValueRepresentation;
 $escape = $this->plugin('escapeHtml');
 $link = $this->plugin('hyperlink');
+$settings = $this->themeSetting('properties')['biblio'];
 /* @var $resource ItemRepresentation */ 
 
-$author = ($valueCreator = $resource->value("dcterms:creator")) instanceof ValueRepresentation
-		? $link($escape($valueCreator->valueResource()->displayTitle()),
-				$valueCreator->valueResource()->url(), [])
-		: $valueCreator;
+$author = ($valueCreator = $resource->value($settings['author']))
+		instanceof ValueRepresentation
+	? $link($escape($valueCreator->valueResource()->displayTitle()),
+			$valueCreator->valueResource()->url(), [])
+	: $valueCreator;
 
-$journal = ( ($issueVal = $resource->value('dcterms:isPartOf'))
+$journal = ( ($issueVal = $resource->value($settings['issue']))
 				instanceof ValueRepresentation
-			&& ($journalVal = $issueVal->valueResource()->value('dcterms:isPartOf'))
+			&& ($journalVal = $issueVal->valueResource()->value($settings['journal']))
 				instanceof ValueRepresentation
 			)
 		? $journalVal->valueResource()->displayTitle()
@@ -21,7 +23,7 @@ $journal = ( ($issueVal = $resource->value('dcterms:isPartOf'))
 
 <tr class="<?= $resource->resourceName(); ?> resource">
 	<td><?= $author ?></td>
-	<td><?= $resource->link($resource->value("dcterms:title")); ?></td>
-	<td><?= $resource->value("dcterms:issued"); ?></td>
+	<td><?= $resource->link($resource->value($settings['title'])); ?></td>
+	<td><?= $resource->value($settings['date']); ?></td>
 	<td><?= $journal; ?></td>
 </tr>
