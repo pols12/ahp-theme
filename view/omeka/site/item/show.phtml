@@ -21,12 +21,15 @@ $this->headScript()->appendScript(<<<'EOT'
 	});
 EOT
 );
+$shouldHaveTranscription = in_array($item->resourceClass()->term(),
+		explode(';', $this->themeSetting('properties')['transcriptedClasses']));
 ?>
 
 <?php echo $this->pageTitle($item->displayTitle(), 2, $item->displayResourceClassLabel()); ?>
 
 <?php $this->trigger('view.show.before'); ?>
 <?php
+$transcriptionHasBeenDisplayed = false;
 if ($embedMedia && $itemMedia) // Affichage de la transcription
 	foreach ($itemMedia as $medium)
 		if('HTML' == $medium->ingesterLabel()
@@ -42,8 +45,12 @@ if ($embedMedia && $itemMedia) // Affichage de la transcription
 			$this->headLink()->appendStylesheet($this->assetUrl('css/latex/ltx-article.css'));
 			$this->headLink()->appendStylesheet($this->assetUrl('css/latex/ltx-ulem.css'));
 			echo $medium->render();
+			$transcriptionHasBeenDisplayed = true;
 			break;
 		}
+if($shouldHaveTranscription && !$transcriptionHasBeenDisplayed) {
+	echo '<div>La transcription n’est pas disponible.</div>';
+}
 
 //Métadonnées minimales
 if ($sender = $item->value($settings['sender'])): ?>
