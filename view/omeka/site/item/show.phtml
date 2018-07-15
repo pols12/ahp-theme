@@ -9,9 +9,9 @@ $this->headScript()->appendScript(<<<'EOT'
 	var wereHidden = false;
 	function toggler(){
 		$(".advanced_properties").toggle();
-		if(wereHidden) $(this).text("Masquer les autres propriétés")
+		if(wereHidden) $(this).text(" Masquer les autres propriétés")
 							.toggleClass('fa-minus-square fa-plus-square');
-		else $(this).text("Afficher les autres propriétés")
+		else $(this).text(" Afficher les autres propriétés")
 					.toggleClass('fa-minus-square fa-plus-square');
 		wereHidden = !wereHidden;
 	}
@@ -23,7 +23,7 @@ EOT
 );
 ?>
 
-<?php echo $this->pageTitle($item->displayTitle(), 2); ?>
+<?php echo $this->pageTitle($item->displayTitle(), 2, $item->displayResourceClassLabel()); ?>
 
 <?php $this->trigger('view.show.before'); ?>
 <?php

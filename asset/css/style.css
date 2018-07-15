@@ -686,6 +686,14 @@
 
   /* @end group Search page */
   /* @group ----- Items/Show ----- */
+  .subhead {
+    font-variant-caps: small-caps;
+    font-size: 0.8em;
+  }
+  .subhead::after {
+    content: " : ";
+  }
+
   #item-linked h4, .resource-list h4 {
     float: none;
   }

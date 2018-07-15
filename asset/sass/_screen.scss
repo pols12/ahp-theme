@@ -631,6 +631,14 @@ footer {
 /* @end group Search page */
 
 /* @group ----- Items/Show ----- */
+.subhead {
+    font-variant-caps: small-caps;
+    font-size: 0.8em;
+	&::after {
+		content: " : ";
+	}
+}
+
 #item-linked, .resource-list {
 	h4 {
 		float:none;
