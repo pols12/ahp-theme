@@ -56,13 +56,14 @@ if ($date = $item->value($settings['date'])): ?>
 	<h4 class="field-name">Date</h4> <div class="date"><?= $date->asHtml(); ?></div>
 <?php endif; ?>
 	
-<?php if ($embedMedia && $itemMedia):
-		foreach ($itemMedia as $media) {
-			if($hasViewableMedia = $media->hasThumbnails()) {
-				echo $this->universalViewer($item);
-				break;
-			}
-		} ?>
+<?php $hasViewableMedia = false;
+if($embedMedia && $itemMedia):
+	foreach ($itemMedia as $media) {
+		if($hasViewableMedia = $media->hasThumbnails()) {
+			echo $this->universalViewer($item);
+			break;
+		}
+	} ?>
 	<div id="itemfiles-nav" class="media-list">
 		<?php foreach ($itemMedia as $medium): ?>
 			<?php if(!$medium->hasThumbnails() && !stristr($medium->displayTitle(), 'transcription')): ?>
