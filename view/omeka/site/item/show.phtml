@@ -4,6 +4,23 @@ $this->htmlElement('body')->appendAttribute('class', 'item resource show');
 $embedMedia = $this->siteSetting('item_media_embed', false);
 /* @var $itemMedia Omeka\Api\Representation\MediaRepresentation[] */
 $itemMedia = $item->media();
+$settings = $this->themeSetting('properties')['letter'];
+$this->headScript()->appendScript(<<<'EOT'
+	var wereHidden = false;
+	function toggler(){
+		$(".advanced_properties").toggle();
+		if(wereHidden) $(this).text("Masquer les autres propriétés")
+							.toggleClass('fa-minus-square fa-plus-square');
+		else $(this).text("Afficher les autres propriétés")
+					.toggleClass('fa-minus-square fa-plus-square');
+		wereHidden = !wereHidden;
+	}
+
+	$(document).ready(function() {
+		$("#advanced_properties_toggler").click(toggler).trigger("click");
+	});
+EOT
+);
 ?>
 
 <?php echo $this->pageTitle($item->displayTitle(), 2); ?>
@@ -29,14 +46,14 @@ if ($embedMedia && $itemMedia) // Affichage de la transcription
 		}
 
 //Métadonnées minimales
-if ($date = $item->value('dcterms:date')): ?>
-	<h5 class="field-name">Date</h5> <div class="date"><?= $date->asHtml(); ?></div>
+if ($sender = $item->value($settings['sender'])): ?>
+	<h4 class="field-name">Expéditeur</h4> <div class="value sender"><?= $sender->asHtml(); ?></div>
 <?php endif;
-if ($sender = $item->value('dm2e:writer')): ?>
-	<h5 class="field-name">Expéditeur</h5> <div class="value description"><?= $sender->asHtml(); ?></div>
+if ($addressee = $item->value($settings['addressee'])): ?>
+	<h4 class="field-name">Destinataire</h4> <div class="value addressee"><?= $addressee->asHtml(); ?></div>
 <?php endif;
-if ($receiver = $item->value('gndo:addressee')): ?>
-	<h5 class="field-name">Destinataire</h5> <div class="value description"><?= $receiver->asHtml(); ?></div>
+if ($date = $item->value($settings['date'])): ?>
+	<h4 class="field-name">Date</h4> <div class="date"><?= $date->asHtml(); ?></div>
 <?php endif; ?>
 	
 <?php if ($embedMedia && $itemMedia):
@@ -58,7 +75,12 @@ if ($receiver = $item->value('gndo:addressee')): ?>
 		<?php endforeach; ?>
 	</div>
 <?php endif; ?>
-<?php echo $item->displayValues(); ?>
+<?php echo $item->displayValues(['shouldDisplayFront'=>true, 'repeatTop'=>$hasViewableMedia]); ?>
+<div class="property"><a id="advanced_properties_toggler" class="fa fa-minus-square">
+		Masquer les autres propriétés</a></div>
+<div class="advanced_properties">
+	<?= $item->displayValues(['shouldDisplayFront'=>false]); ?>
+</div>
 <div class="property">
 	<?php $itemSets = $item->itemSets(); ?>
 	<?php if (count($itemSets) > 0): ?>

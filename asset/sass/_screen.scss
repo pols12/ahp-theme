@@ -671,6 +671,9 @@ footer {
 	margin-left: -9999px !important;
 	position: absolute;
 }
+.value a img {
+	display: none;
+}
 /*.items.show div[role=main] {
     @include padding-trailer(3);
     

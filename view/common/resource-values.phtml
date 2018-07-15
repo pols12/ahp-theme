@@ -1,7 +1,16 @@
 <?php
 $escape = $this->plugin('escapeHtml');
 $labelInfo = $this->setting('property_label_information');
-?>
+$settings = $this->themeSetting('properties')['letter'];
+
+if(isset($shouldDisplayFront)) { //For item/show view
+	$frontTerms = array_flip([$settings['publishedIn']]);
+	if(isset($repeatTop) && $repeatTop || !$shouldDisplayFront)
+		$frontTerms += array_flip([$settings['sender'], $settings['addressee'], $settings['date']]);
+	$values = $shouldDisplayFront
+			? array_intersect_key($values, $frontTerms)
+			: array_diff_key($values, $frontTerms);
+} ?>
 <?php foreach ($values as $term => $propertyData): ?>
     <div class="property">
         <h4 class="field-name">
