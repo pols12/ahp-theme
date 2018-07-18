@@ -3,10 +3,6 @@
 
 /* @group ----- Generic HTML elements ----- */
 
-/** {
-    @include box-sizing(border-box);
-}*/
-
 html, body {
     margin: 0;
     padding: 0;
@@ -15,7 +11,6 @@ html, body {
 html { 
     width: 100%;
     height: 100%;
-
 }
 
 body { 
@@ -35,7 +30,6 @@ a {
     &:link { color: $dark-red}
     &:visited { color: $red}
     &:active, &:hover { color: $bright-red}
-    
 }
 
 h1, h2 {
@@ -60,7 +54,7 @@ input, button, select {
 q:lang(fr) { quotes: "« " " »"}
 q:lang(en) { quotes: "“" "”"}
 
-/* @end */
+/* @end group Generic HTML elements */
 
 /* @group ----- Global classes ----- */
 
@@ -93,24 +87,9 @@ div[role=main] {
         font-size: 1.5 * $base-font-size;
         line-height: 1.5 * $base-line-height;
     }
-    
-    & + nav, h1 + nav {
-        @include box-shadow(rgba(0,0,0,.1) 0 5px 10px);
-        height: rhythm(2);
-        position: relative;
-        z-index: 60;
-    }
 }
 
-#outputs {
-    padding: rhythm(1) gutter(6);
-    border-color: #e7e7e7;
-    @include leading-border(1px, 1, $base-font-size, solid);
-    background-color: #fff;
-}
-
-
-/* @end */
+/* @end group Global classes */
 
 /* @group ----- Header ----- */
 
@@ -140,31 +119,7 @@ header {
     }
 }
 
-#mobile-nav { 
-    height: rhythm(2.5);
-    text-align: right;
-    display: block;
-    line-height: rhythm(2.8125);
-    
-    a { 
-        display: inline-block; 
-        font-size: 24px;
-        background-color: $green;
-        color: #fff;
-        height: rhythm(1);
-        padding: 0 6px;
-        @include border-radius(40px);
-        margin-right: gutter(6);
-        line-height: rhythm(1.125);
-    }
-    
-    a:last-of-type { margin-bottom: 0; }
-    
-    @include susy-breakpoint($break) { display: none; }
-}
-
 #search-form {
-    //display: none;
     padding: rhythm(.5) 2%;
     border-color: #e7e7e7;
     @include leading-border(1px, .5, $base-font-size, solid);
@@ -198,19 +153,21 @@ header {
 		float:left;
 		width:100%;
 		margin: rhythm(0.3) 0 0;
+		text-align: center;
+		line-height: 1em;
 	}
 }
 
 /* @end Header */
 
-/* @group ----- Header Navigation */
+/* @group ----- Header/Navigation ----- */
 
 nav ul {
     list-style-type: none;
     padding-left: 0;
 }
 
-.hamburger{
+.hamburger{ //Pour les petits écrans
 	background:none;
 	position:absolute;
 	left:0;
@@ -224,7 +181,7 @@ nav ul {
 	outline:none;
 	z-index:1000;
 }
-.cross{
+.cross{ //Croix pour fermer le menu Hamburger
 	background:none;
 	position:absolute;
 	left:0;
@@ -361,7 +318,7 @@ nav ul {
     }
 }
 
-/* @end Header Navigation */
+/* @end group Header/Navigation */
 
 /* @group ----- Footer ----- */
 
@@ -385,47 +342,71 @@ footer {
     }
 }
 
-.twitter,
-.facebook,
-.tumblr {
-    text-indent: -9999px;
-    position: relative;
-    display: inline-block;
-    width: 2 * $base-font-size;
-    font-size: 2 * $base-font-size;
+/* @end group Footer */
+
+/* @group ----- Items – Properties ----- */
+/* Mise en forme des propriétés des items, où qu’ils soient. */
+
+.property, .filter {
+	@include clearfix;
+	margin-bottom: rhythm();
+	
+	&>* {
+		display:inline;
+	}
+	
+	.value {
+		display: block;
+		img {
+			height: $base-font-size;
+			vertical-align: sub;
+		}
+	}
 }
 
-.twitter:before,
-.facebook:before,
-.tumblr:before {
-    font-family: 'icomoon';
-    content: attr(data-icon);
-    speak: none;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
-    text-indent: 0;
-    position: absolute;
-    left: 0;
+.field-name, .filter-label {
+	display: block;
+	font-weight: 800;
+	
+	margin-top:0;
+	margin-bottom:0;
+	margin-right: 0.5em;
+	float: left;
+	&:after {
+		content: " :";
+	}
 }
 
-.facebook:before {
-    content: "\e002";
-}
-.twitter:before {
-    content: "\e001";
-}
-.tumblr:before {
-    content: "\e014";
+/* @end Items – Properties */
+
+/* @group ----- Browse ----- */
+/* Common for item/browse and item-set/browse */
+
+#no-results {
+    padding: 0 gutter(6);
 }
 
-/* @end */
+.resource-list {
+	padding: 0;
+	.resource {
+		overflow: auto;
+		padding-bottom: 1.43em;
 
-/* @group ----- Navigation ----- */
+		img {
+			float: left;
+			margin-right: gutter(4);
+		}
+	}
+	h4 {
+		float: none;
+		margin: 0;
+	}
+	.value {
+		overflow: auto;
+	}
+}
 
-.advanced-search { //Bouton "Filtrer"
+#content .advanced-search { //Bouton "Filtrer"
 	display:block;
 	width: 5em;
 	margin: 0 auto rhythm();
@@ -483,160 +464,19 @@ footer {
 	}
 }
 
-.by-image a:before {
-    content: "\e00e";
-    font-family: 'icomoon';
-    speak: none;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
-    margin-right: .5em;
-    display: block;
-    margin: 0 auto;
-}
+/* @end group Browse */
 
-.alphabetically a:before {
-    content: "ABC";
-    font-size: 12px;
-    vertical-align: middle;
-}
-
-.people nav ul li {
-    display: inline-block;
-}
-
-/* @end */
-
-/* @group ----- Items – Properties ----- */
-/* Mise en forme des propriétés des items, où qu’ils soient. */
-
-.property, .filter {
-	@include clearfix;
-	margin-bottom: rhythm();
-	
-	&>* {
-		display:inline;
-	}
-	
-	.value {
-		display: block;
-		img {
-			height: $base-font-size;
-			vertical-align: sub;
-		}
-	}
-}
-
-.field-name, .filter-label {
-	display: block;
-	font-weight: 800;
-	
-	margin-top:0;
-	margin-bottom:0;
-	margin-right: 0.5em;
-	float: left;
-	&:after {
-		content: " :";
-	}
-}
-
-/* @end Items – Common */
-
-/* @group ----- Items/Browse ----- */
-
-#no-results {
-    padding: 0 gutter(6);
-}
-
-.resource-list {
-	padding: 0;
-	.item {
-		overflow: auto;
-		padding-bottom: 1.43em;
-
-		img {
-			float: left;
-			margin-right: gutter(4);
-		}
-	}
-	h4 {
-		float: none;
-		margin: 0;
-	}
-	.value {
-		overflow: auto;
-	}
-}
-
-.items + nav {
-    @include box-shadow(rgba(0, 0, 0, 0.1) 0 -5px 20px);
-    overflow: auto;
-}
-
-/* @end Items/Browse */
-
-/* @group ----- Browse an item set ----- */
+/* @group ----- Browse/ItemSets ----- */
 
 .metadata {
 	@include clearfix;
 }
 
-/*.item {
-    div[role=main] {
-        background-color: #fff;
-        @include padding-trailer(2);
-        
-        h2 { 
-            padding-left: 0; 
-            
-            //&:first-of-type { margin-top: rhythm(1); }
-			//Rajouté pour le titre de la page,
-			//à décommenter si c’est pour un sous-titre
-        }
-    }
-    
-    .metadata .image {
-        width: 100%;
-        padding: 20px;
-        margin: 0;
-        border-color: #e7e7e7;
-        @include leading-border(1px, 0, $base-font-size, solid);
-    }
-    
-    .description {
-        padding: 0 gutter(6);
-        
-        p { 
-            clear: both; 
-            
-            &:first-of-type { padding-top: rhythm(1); }
-        }
-    }
-    
-    .category { font-weight: bold; }
-}*/
-
-/* @end */
-
-/* @group ----Search page------ */
-// Solr Item browse view
-
-.search-results-count {
-	width: 80%;
-	.pagination {
-		margin-left: auto;
-		margin-top: 1em;
-	}
-}
-.search-results h3 {
-	clear: both;
-}
-
-/* @end group Search page */
+/* @end group Browse/ItemSets */
 
 /* @group ----- Items/Show ----- */
+/* @see Items – Properties */
+
 .subhead {
     font-variant-caps: small-caps;
     font-size: 0.8em;
@@ -667,112 +507,22 @@ footer {
 	background: URL('../../../../application/asset/thumbnails/default.png') no-repeat rhythm(0.2) center;
 	background-size: rhythm();
 }
-#itemfiles { //Pour chocolat. Nécessaire à UV ???
-	width: 100%;
-	height: 50vh;
-	background: #E0E0E0;
-	margin:auto;
-}
+
 .uv {
 	margin-bottom: rhythm();
-	//display:none;
 }
 .masked { //UniversalViewer est .masked au chargement
-	/*display: none;*/
 	margin-left: -9999px !important;
 	position: absolute;
 }
 .value a img {
 	display: none;
 }
-/*.items.show div[role=main] {
-    @include padding-trailer(3);
-    
-    & > div {
-        padding: 0 gutter(6);
-    }
-    
-    & > aside {
-        & > div {
-            display: none;
-        }
-        
-        nav {
-            padding: 0;
-        }
-        
-        .images {
-            display: block;
-            padding: 0;
-        }
-    
-        img {
-            width: 100%; 
-            height: auto;
-            vertical-align: bottom;
-        }
-    }
-    
-    .images a {
-        display: none;
-        
-        &.current {
-            display: block;
-        }
-    }
-    
-    .thumbnails, .other-media { 
-        display: block; 
-        @include trailer();
-        overflow: auto;
-    }
-        
-    .thumbnails img {
-        width: 25%;
-        cursor: pointer;
-        opacity: .5;
-        float: left;
-        
-        &.current {
-            opacity: 1;
-        }
-    }
-    
-    .other-media .mejs-container {
-        max-width: 100%;
-        overflow: hidden;
-    }
-}
 
-.items.show .element-set { display: none; }*/
-
-.item-pagination {
-    height: rhythm(2);
-    margin: 0;
-    position: relative;
-    @include trailing-border(1px, 0, $base-font-size, solid);
-    border-color: #e7e7e7;
-    
-    li {
-        position: absolute;
-        top: 0;
-        width: 50%;
-        text-align: center;
-        
-        a {
-            padding: rhythm(.5) 0;
-            display: inline-block;
-            width: 100%;
-        }
-    }
-}
-
-#next-item {
-    left: 50%;
-}
 /* @end Items/Show */
 
 /* @group ----- Media/Show ----- */
+/* @see Items – Properties */
 
 .media #content {
 	nav.back {
@@ -829,909 +579,3 @@ footer {
 	}
 }
 /* @end Forms */
-							   
-/*******************************************************************
-					GROUPES NON UTILISÉS
-********************************************************************/
-
-
-/* @group ----- People ----- *//*
-
-.people {
-    .items { 
-        background-color: #fff;
-        padding: rhythm() gutter(6); 
-        overflow: auto;
-    }
-
-    .pagination {    
-        width: 100%;
-        background-color: #fff;
-        margin: 0;
-        padding-left: gutter(6);
-        border-color: #e7e7e7;
-        float: left;
-        @include trailing-border(1px, 0, $base-font-size, solid);
-        
-        & + ul {
-            margin: 0;
-            font-size: 0;
-            float: right;
-            width: 100%;
-            background-color: #fff;
-            position: relative;
-            border-left: 1px solid #e7e7e7;
-            @include box-shadow(rgba(0,0,0,.1) 0 5px 10px);
-            
-            li {
-                width: 50%;
-                font-size: $base-font-size;
-                text-align: center;
-                background-color: #fff;
-                height: rhythm(2);
-                line-height: $base-line-height;
-                display: table;
-                float: left;
-                
-                a { 
-                    width: 100%;
-                    line-height: $base-line-height;
-                    display: table-cell;
-                    vertical-align: middle;
-                    height: 100%;
-                }
-            }
-        }
-    }
-    
-    nav li {
-        height: 100%;
-    }
-
-    .letter {
-        clear: both;
-    }
-    
-    .blurb { display: none; }
-}
-
-.people.items.browse .item {
-    @include trailing-border(0px, 1, $base-font-size, solid);
-    overflow: hidden;
-    padding: 0;
-}
-
-.persons.images { 
-    text-align: center;
-    @include padding-leader();
-
-    .person { 
-        width: percentage(1/2); 
-        display: inline-block;
-        vertical-align: top;
-        margin: 2%;
-        text-align: center;
-        padding: 0;
-    }
-    
-    .image { 
-        width: 100px;
-        display: inline-block; 
-        overflow: hidden;
-        text-align: center;
-        background: #e7e7e7 center center no-repeat;
-        @include background-size(cover);
-        height: rhythm(6);
-        @include trailer();
-
-        
-        a {
-            display: block;
-            width: 100%;
-            height: 100%;
-            text-indent: -9999px;
-        }
-    }
-    
-    .person h2 { 
-        margin-top: 0; 
-        @include adjust-font-size-to(14px);
-        text-align: center;
-        font-style: italic;
-    }
-}
-
-.persons.alpha { 
-    padding: 0;
-    text-align: left;
-    display: none;
-
-    h2 {
-        margin: 0;
-        background-color: #e7e7e7;
-        padding: rhythm(.25) gutter(6);
-        @include adjust-font-size-to($base-font-size);
-    }
-    
-    .person {
-        padding: rhythm(.25) gutter(6);
-        display: inline-block;
-        width: 100%;
-    }
-}
-
-#people-item-type-metadata-first-name,
-#people-item-type-metadata-last-name {
-    display: none;
-}
-
-.persons + nav {
-    @include box-shadow(rgba(0, 0, 0, 0.1) 0 0 20px);
-    overflow: auto;
-}
-
-/* @end */
-
-/* @group ----- Search results ----- *//*
-
-.search div[role="main"] {
-    width: 100%;
-}
-
-.search h1:first-of-type {
-    position: relative;
-    z-index: 60;
-}
-
-.search-result {
-    border-color: #e7e7e7;
-    padding: 0 gutter(6);
-    @include trailing-border(1px, 1, $base-font-size, solid);
-    @include trailer();
-    float: left;
-    clear: both;
-    width: 100%;
-    
-    h3 {
-        margin-top: 0;
-    }
-
-    h3:only-child {
-        margin-bottom: 0;
-    }
-    
-    &:first-of-type {
-        @include padding-leader();
-    }
-    
-    &:last-of-type {
-        border-bottom: 0;
-    }
-    
-    .description {
-        padding: 0 !important;
-    }
-}
-
-.search .pagination:first-of-type, .search .pagination:nth-of-type(2) {
-    @include box-shadow(rgba(0,0,0,.04) 0 0 10px 10px);
-    z-index: 50;
-    border: 0;
-}
-
-.search-result .image {
-    display: block;
-    width: 100px;
-    height: 100px;
-    float: left;
-    background-color: #ccc;
-    margin: 0 gutter(6) rhythm(.5) 0;
-    clear: both;
-}
-
-/* @end */
-
-/* @group ----- Themes ----- *//*
-
-.themes {    
-    .theme-list {
-        padding: rhythm(2) gutter(6);
-        background-color: #fff;
-    }
-    .theme a {
-        background-color: #e7e7e7;
-        padding: rhythm(.5) gutter(6);
-        @include trailer();
-        @include border-radius(5px);
-        display: inline-block;
-        width: 100%;
-    }
-}
-
-/* @end Themes */
-
-/* @group ----- Events ----- *//*
-
-.items.event {
-    
-    .items { 
-        background-color: #fff;
-        overflow: auto;
-        position: relative;
-        @include padding-leader(2);
-        
-        .period h2 { background-color: #e7e7e7; }
-        .period:nth-of-type(2n) h2 { background-color: #e7e7e7; }
-        
-        h2 {
-            @include adjust-font-size-to($base-font-size);
-            margin-top: 0;
-            padding: rhythm(.5) gutter(6);
-        }
-        
-        .image {
-            display: block;
-            width: 100px;
-            height: 100px;
-            float: left;
-            background-color: #ccc;
-            margin: 0 gutter(6) rhythm(.5) 0;
-        }
-        
-        .period {
-            overflow: auto;
-            border-color: #e7e7e7;
-            @include trailing-border(1px, 0, $base-font-size, solid);
-        }
-        
-        .event {
-            padding: 0 gutter(6);
-            border-color: #e7e7e7;
-            @include leading-border(1px, 0, $base-font-size, solid);
-            @include padding-trailer();
-            
-            &:first-of-type {
-                @include leading-border(0px, 0, $base-font-size, solid);
-            }
-        }
-    }
-}
-
-#period-nav {
-    padding: rhythm(.625) gutter(6);
-    text-align: left;
-    vertical-align: top;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    font-size: 14px;
-    line-height: 24px;
-    background-color: #fff;
-    text-align: center;
-    @include box-shadow(0 0 50px #bbb);
-    
-    .heading:after {
-        content: ":";
-        display: inline-block;
-        width: 160px;
-        text-align: left;
-    }
-    
-        
-    ul { 
-        position: absolute;
-        top: rhythm(.25);
-        margin: rhythm(.1875) 0 rhythm(1) 0;
-        left: 50%;
-        border-bottom: 1px solid #e7e7e7;
-    }
-    
-    ul li { 
-        display: none; 
-        background-color: #fff;
-        text-align: left;
-        
-        &:first-of-type { 
-            font-weight: bold; 
-            display: block;
-            cursor: pointer;
-            height: rhythm(1.5);
-            line-height: 1.25 * $base-line-height;
-            padding: 0 gutter(6);
-            color: $red;
-            width: 150px;
-            border: solid #e7e7e7;
-            border-width: 1px 1px 0 1px;
-            
-            &:after { 
-                content: "";
-                height: 0;
-                width: 0;
-                border-left: 6px solid transparent;
-                border-right: 6px solid transparent;
-                border-top: 6px solid $red;
-                position: absolute;
-                top: 13px;
-                right: 10px;
-            }
-        }
-    }
-    
-    ul:hover li, &.on ul li, &.off ul li:first-of-type {
-        display: block;
-    }
-    
-    &.off ul li {
-        display: none;
-    }
-    
-    a {
-        border: solid #e7e7e7;
-        border-width: 1px 1px 0 1px;
-        width: 150px;
-        display: block;
-        height: rhythm(1.5);
-        line-height: 1.25 * $base-line-height;
-        padding: 0 gutter(6);
-    }
-    
-    &.fixed {
-        position: fixed;
-        top: 0;
-    }
-}
-
-#event-item-type-metadata-event-sort-date {
-    display: none;
-}
-
-/* @end Events */
-
-/* @group ----- Scavenger Hunt ----- *//*
-
-.layout-scavenger-hunt {
-    position: relative;
-    overflow: auto;
-    @include trailer();
-
-    .found-actions {
-        display: none;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background-color: rgba(0,0,0,.4);
-    }
-    
-    img {
-        max-width: 100%;
-        vertical-align: bottom;
-        cursor: pointer;
-    }
-    
-    h3 {
-        @include leader();
-        @include trailer(.5);
-        color: #fff;
-        text-align: center;
-        text-transform: uppercase;
-        font-size: 1.75 * $base-font-size;
-        cursor: pointer;
-    }
-    
-    .found-actions a {
-        display: block;
-        width: 70%;
-        margin: auto;
-        text-align: center;
-        color: #fff;
-        padding: rhythm(.5) 10px;
-        @include trailer();
-        background-color: $yellow;
-        @include border-radius(5px);
-    }
-    
-    .transcript {
-        width: 100%;
-        border-color: rgba(255,255,255,.3);
-        padding: rhythm() gutter(12);
-        background-color: #fff;
-        position: relative;
-        z-index: 10;
-    }
-
-    .no-actions {
-        cursor: default;
-    }
-    
-    a.done {
-        text-indent: -9999px;
-        background-color: transparent;
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        font-size: 1.5 * $base-font-size;
-        
-        &:before {
-            font-family: "icomoon";
-            content: "\e600";
-            text-indent: 0;
-            speak: none;
-            font-weight: normal;
-            font-variant: normal;
-            text-transform: none;
-            line-height: 1;
-            -webkit-font-smoothing: antialiased;
-            position: absolute;
-            top: 0px;
-            right: 0px;
-        }
-    }
-}
-
-.item-collapsed {
-    padding: rhythm(.5);
-
-    &:after {
-        position: absolute;
-        right: rhythm(.375);
-        top: rhythm(.375);
-        font-family: "icomoon";
-        content: "\e009";
-        text-indent: 0;
-        speak: none;
-        font-size: 1.25 * $base-font-size;
-        font-weight: normal;
-        font-variant: normal;
-        text-transform: none;
-        -webkit-font-smoothing: antialiased;
-        color: $red;
-    }
-    
-    &.open:after {
-        content: "\e007";
-    }
-}
-
-.plain-text {
-    background-color: #fff;
-    padding: 0 gutter(12);
-    overflow: auto;
-}
-
-.layout-geolocation-map {
-    @include leader(-1);
-}
-
-.layout-file-text .exhibit-items.left {
-    max-width: none !important;
-}
-
-/* @end Scavenger Hunt */
-
-/* @group ----- Discover ----- *//*
-
-.explorations h1 + .pagination {
-    @include box-shadow(rgba(0,0,0,.1) 0 5px 10px);
-}
-
-.explorations div[role=main], 
-.exploration-answer div[role=main]{
-    float: left;
-    width: 100%;
-}
-
-.explorations div[role=main] {
-    background-color: #e7e7e7;
-}
-
-.explorations div[role=main] h1:first-of-type,
-.exploration-answer div[role=main] h1:first-of-type {
-    background-color: $blue;
-    color: #fff;
-}
-
-.exhibit-geolocation-map {
-    height: rhythm(10) !important;
-}
-
-.questions { 
-    clear: both;
-    margin: 0 auto;
-}
-
-.explorations .question {
-    width: 100%;
-    @include box-shadow(1px 1px 0 rgba(0,0,0,.15));
-    background-color: #fff;
-    background-size: cover;
-    background-position: center center;
-    float: left;
-    border-color: #e7e7e7;
-    border-left: 1px solid #e7e7e7;
-    position: relative;
-    padding: 0 20px;
-    margin-bottom: 0;
-
-    p, a { 
-        margin: 20px 0; 
-        display: block;
-        font-size: 1.5 * $base-font-size;
-        line-height: 1.5 * $base-line-height;
-    }
-
-    &.color-1:after {
-        /* Black *\/
-        background-image: -webkit-linear-gradient(215deg, rgba(#000, 0.9), rgba(255, 255, 255, 0.3));
-        background-image: -moz-linear-gradient(215deg, rgba(#000, 0.9), rgba(255, 255, 255, 0.3));
-        background-image: linear-gradient(215deg, rgba(#000, 0.9), rgba(255, 255, 255, 0.3));
-    }
-
-
-    &.color-2:after {
-        /* Red *\/
-        background-image: -webkit-linear-gradient(15deg, rgba($red, 0.8), rgba(darken($red, 20), .8));
-        background-image: -moz-linear-gradient(15deg, rgba($red, 0.8), rgba(darken($red, 20), .8));
-        background-image: linear-gradient(15deg, rgba($red, 0.8), rgba(darken($red, 20), .8));
-    }
-    
-    &.color-3:after {
-        /* Blue *\/
-        background-image: -webkit-linear-gradient(255deg, rgba($blue, 0.8), rgba(darken($blue, 20), 0.6));
-        background-image: -moz-linear-gradient(255deg, rgba($blue, 0.8), rgba(darken($blue, 20), 0.6));
-        background-image: linear-gradient(255deg, rgba($blue, 0.8), rgba(darken($blue, 20), 0.6));
-    }
-    
-    &.color-4:after {
-        /* Green *\/
-        background-image: -webkit-linear-gradient(135deg, rgba($green, 0.8), rgba(darken($green, 20), 0.64));
-        background-image: -moz-linear-gradient(135deg, rgba($green, 0.8), rgba(darken($green, 20), 0.64));
-        background-image: linear-gradient(135deg, rgba($green, 0.8), rgba(darken($green, 20), 0.64));
-    }
-
-    &.color-5:after {
-        /* Yellow *\/
-        background-image: -webkit-linear-gradient(195deg, rgba($yellow, 0.8), rgba(darken($yellow, 20), 0.4));
-        background-image: -moz-linear-gradient(195deg, rgba($yellow, 0.8), rgba(darken($yellow, 20), 0.4));
-        background-image: linear-gradient(195deg, rgba($yellow, 0.8), rgba(darken($yellow, 20), 0.4));
-    }
-    
-    &:after {
-        content: "";
-        display: block;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        left: 0;
-        z-index: 0;
-    }
-    
-    a {
-        position: relative;
-        z-index: 10;
-        color: #fff;
-    }
-    
-    &.color-1 a { text-shadow: 0 0 60px #000, 0 0 60px #000; }
-    &.color-2 a { text-shadow: 0 0 60px $red; }
-    &.color-3 a { text-shadow: 0 0 60px $blue; }
-    &.color-4 a { text-shadow: 0 0 60px darken($green,30); }
-    &.color-5 a { text-shadow: 0 0 60px saturate($yellow, 30); }
-}
-
-.exploration-answer div[role=main] {
-    background: #fff;
-    
-    h2 {
-        padding: 0 gutter(6);
-    }
-}
-
-.exhibit-description p {
-    margin: rhythm() 0;
-    
-    &:first-of-type {
-        margin-top: 0;
-    }
-}
-
-.layout-file-text .thumbnail {
-    margin: 0 gutter(6) !important;
-}
-
-.layout-file-text .fullsize {
-    max-width: none;
-    width: 100%;
-    text-align: center;
-    background-color: #000;
-}
-
-.answer {
-    background: #fff;
-    padding: rhythm(1) 0;
-    
-    p {
-        padding: 0 gutter(6);
-    }
-    
-    .related-items {
-        display: none;
-    }
-    
-    .related-items-mobile {
-        @include trailer();
-        @include leader(2);
-        overflow: auto;
-
-        .previous, .next {
-            display: inline-block;
-            background-color: #666;
-            width: 5%;
-            height: 9em;
-            line-height: 9em;
-            float: left;
-            text-align: center;
-            vertical-align: middle;
-            font-weight: bold;
-            
-            a { color: #fff; }
-        }
-        
-        .image {
-            display: inline-block;
-            width: 90%;
-            
-            &:first-of-type { margin: 0; }
-            
-            &:before {
-                content: "1/5";
-                text-align: center;
-                display: inline;
-                line-height: 4.5em;
-                margin-left: 45%;
-                font-size: 2em;
-            }
-        }
-        
-        .caption { 
-            background-color: #e7e7e7;
-            font-style: italic; 
-            clear: both;
-            padding: rhythm(1) gutter(6);
-            text-align: center;
-        }
-    }
-}
-
-.right {
-    width: 100%;
-    display: block;
-    @include susy-breakpoint($break) {
-        float: right;
-        width: 35%;
-        margin-right: 5%;
-        
-        .image {
-            float: right;
-            &:first-of-type { margin-right: 0; }
-        }
-    }
-}
-
-.learn-more {
-    clear: both;
-    padding: rhythm(1) gutter(6);
-    overflow: auto;
-    border-color: #ccc;
-
-    & > p {
-        margin-left: 1.5em;
-        text-indent: -1.5em;
-    }
-    
-    & > p:first-of-type { 
-        font-weight: bold; 
-    }
-    
-    .other-questions {
-        border-color: #ccc;
-        @include leading-border(1px, 1, $base-font-size, solid);
-        @include trailing-border(1px, 1, $base-font-size, solid);
-
-        & > p a:before {
-            font-family: 'icomoon';
-            speak: none;
-            font-weight: normal;
-            font-variant: normal;
-            text-transform: none;
-            line-height: 1;
-            -webkit-font-smoothing: antialiased;
-            margin-right: .5em;
-        }
-
-        & > p:first-of-type { margin-top: 0;}
-        
-        & > p:last-of-type { margin-bottom: 0;}
-        
-        .back a:before { content: "\e00d"; }
-        .prev a:before { content: "\e006"; }
-        .next a:before { content: "\e009"; }
-    }
-    
-    ul {
-        padding-left: 1.5em;
-        border-color: #ccc;
-        @include trailing-border(1px, 1, $base-font-size, solid);
-    }
-}
-
-.image-list-left-thumbs {
-    padding: 0 gutter(6);
-    
-    img { 
-        margin: rhythm(1) gutter(6) rhythm(1) 0; 
-        float: left;
-    }
-}
-
-.image-text-group {
-    overflow: visible;
-}
-
-/* @end Discover */
-
-/* @group ----- About ----- *//*
-
-.page div[role=main] {
-    clear: both;
-    padding: 0 0 rhythm(2) 0;
-    background-color: #fff;
-    float: left;
-    
-    #content {
-        padding: 0 gutter(6);
-    }
-}
-
-/* @end About */
-
-/* @group ----- Home ----- *//*
-
-#intro {
-    background-color: #fff;
-    padding: rhythm(.5) gutter();
-    @include trailing-border(1px, 1, $base-font-size, solid);
-    border-color: #e7e7e7;
-    clear: both;
-}
-
-#intro h1 {
-    font-size: 1.5 * $base-font-size;
-    line-height: 1.5 * $base-line-height;
-    margin: rhythm(.25) 0;
-}
-
-#intro p:first-of-type {
-    margin-top: 0;
-}
-
-#intro p:last-of-type {
-    margin-bottom: rhythm(.5);
-}
-
-#intro .button {
-    background-color: $blue;
-    display: inline-block;
-}
-
-
-.home .news-item {
-    @include container;
-    height: rhythm(12);
-    overflow: hidden;
-    position: relative;
-    
-    h1 {
-        font-size: $base-font-size;
-        line-height: $base-line-height;
-        text-transform: uppercase;
-    }
-    
-    h2 {
-        margin: 0 0 $base-line-height;
-        padding-left: 0;
-    }
-    
-    p {
-        display: block;
-    }
-}
-
-#featured-question {
-    @include adjust-leading-to(1);
-    padding: rhythm(.5) gutter();
-    background-color: #fff;
-    min-height: rhythm(14);
-    
-    &:after {
-        background-image: -webkit-linear-gradient(215deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.3));
-        background-image: -moz-linear-gradient(215deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.3));
-        background-image: linear-gradient(215deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.3));
-    }
-    
-    h1 { margin-top: 0; }
-    
-    span { display: block; }
-    
-    .category {
-        text-transform: uppercase;
-        @include adjust-font-size-to(10px);
-    }
-    
-    .title { @include adjust-leading-to(.75); }
-}
-
-#featured-person {
-    @include leading-border(1px, 1, $base-font-size, solid);
-    background: #fff no-repeat center 25%/cover;
-    width: 100%;
-    
-    &:after {
-        background-image: -webkit-linear-gradient(80deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.3));
-        background-image: -moz-linear-gradient(80deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.3));
-        background-image: linear-gradient(80deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.3));
-    }
-}
-
-#featured-three {
-    @include leading-border(1px, 1, $base-font-size, solid);
-    background: #fff url('../img/spencer.jpg') no-repeat center 25%;
-}
-
-.featured {
-    @include adjust-leading-to(1);
-    padding: rhythm(.5) gutter();
-    background-size: cover;
-    position: relative;
-    overflow: hidden;
-    border-color: #fff;
-    color: #fff;
-
-    .button { 
-        display: inline-block;
-        background-color: $red;
-        text-shadow: none;
-    }
-    
-    * { 
-        position: relative;
-        z-index: 10; 
-        text-shadow: 0 0 30px #000;
-    }
-    
-    h1 { margin-top: 0; }
-    
-    span { display: block; }
-    
-    .category {
-        text-transform: uppercase;
-        @include adjust-font-size-to(10px);
-    }
-    
-    .title { @include adjust-leading-to(.75); }
-    
-    &:after {
-        content: "";
-        display: block;
-        width: 100%;
-        padding-bottom: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0;
-    }
-}
-
-/* @end Home */

@@ -1,11 +1,10 @@
 /* @group ----- Generic HTML elements ----- */
 
 body {
-    //@include container;
     padding-bottom: rhythm(5);
 }
 
-/* @end */
+/* @end group Generic HTML elements */
 
 /* @group ----- Global classes ----- */
 
@@ -13,24 +12,16 @@ div[role=main] {
     @include box-shadow(#BBB 0 0 50px); 
     
     & > h2:first-of-type {
-        //padding: rhythm(3) gutter(6);
         text-align: center;
     }
 }
 
-.image {
-    width: 16em;
-    height: 12em;
-}
-
-/* @end */
+/* @end group Global classes */
 
 /* @group ----- Header ----- */
 
-header { 
-    //padding: rhythm(4) 1em rhythm(1);
+header {
     text-align: left;
-    //@include leader(2);
     background-color: #FFF;
     z-index: 2;
     @include box-shadow(0 0 50px rgba(0, 128, 0, 0.18));
@@ -40,8 +31,6 @@ header {
     padding:0;
 }
 
-
-
 #site-title {
     @include adjust-font-size-to(14px);
     float: none;
@@ -50,10 +39,7 @@ header {
         height: rhythm(5);
         width: auto;
     }
-	/*.home */
-    //padding: rhythm(2) 0;
 }
-
 
 .logo { margin: .5em 1em 1em 0; }
 
@@ -89,40 +75,10 @@ header {
         display: inline-block;
     }
 }
-/*.home #search-form {
-    position: relative;
-    width: 100%;
-    border-left: 0;
-    padding: rhythm(.5) gutter();
-    float: left;
-    width: 100%;
-    background-color: rgba(0,0,0,.04);
-    @include leader();
-    
-    input[type=text], input[type=submit] {
-        height: rhythm(1.5);
-        margin: rhythm(.5) 0;
-        float: left;
-        padding: rhythm(.25) gutter();
-        font-size: $base-font-size;
-    }
-    
-    input[type=text] {
-        width: 65%;
-        border: 0;
-    }
-    
-    input[type=submit] {
-        width: 35%;
-        background-color: $green;
-        color: #f7f7f7;
-        border: 0;
-    }
-}*/
 
-/* @end */
+/* @end group Header */
 
-/* @group ----- Header Navigation ----- */
+/* @group ----- Header/Navigation ----- */
 
 .hamburger, .cross {
 	display: none;
@@ -180,7 +136,7 @@ header {
     }
 }
 
-/* @end */
+/* @end group Header/Navigation */
 
 /* @group ----- Footer ----- */
 
@@ -200,39 +156,11 @@ footer img {
     margin: 0 0 rhythm() gutter(6);
 }
 
-/* @end */
-
-/* @group ----- Home ----- */
-
-#intro {
-    @include span(4 alpha);
-    @include trailing-border(0px, 0, $base-font-size, solid);
-}
-
-.home .news-item {
-    @include span(4);
-    @include padding-leader(.5);
-    
-    &:first-of-type { @include span(4 alpha); }
-    &:last-of-type { @include span(4 omega); }
-    
-    &:after {
-        content: "";
-        display: block;
-        width: 100%;
-        background-image: linear-gradient(0deg, rgba(255,255,255,1), rgba(255,255,255,0));
-        position: absolute;
-        z-index: 4;
-    }
-}
-
-
-
-/* @end */
+/* @end group Footer */
 
 /* @group ----- Navigation ----- */
 
-.advanced-search {
+#content .advanced-search {
 	margin-left: span(2);
 }
 
@@ -240,216 +168,7 @@ footer img {
 	margin-left: span(1);
 }
 
-
-/* @group ----- Discover ----- */
-
-.explorations .questions {
-    @include padding-leader();
-}
-
-.explorations .question {
-    width: 240px;
-    margin-bottom: 20px;
-}
-
-.exploration-answer div[role=main] h2 {
-    padding: 0;
-}
-
-.answer {
-    padding: 0 0 rhythm(2) gutter(6);
-    @include span(8 alpha);
-
-    .related-items {
-        @include leader(2);
-        clear: both;
-        display: block;
-        
-        .item { 
-            @include trailer(2); 
-            overflow: auto;
-        }
-        
-        .image {
-            margin-left: gutter(6);
-            margin-right: 0;
-            clear: both;
-            width: 12em;
-            height: 9em;
-        }
-        
-        h2, p {
-            clear: none;
-            margin: 0 0 rhythm(1) 0;
-            padding: 0 gutter(6) 0 0;
-        }
-    }
-    
-    .related-items-mobile {
-        display: none;
-    }
-    
-    p {
-        padding: 0;
-    }
-}
-
-.learn-more {
-    clear: none;
-    padding: 0 gutter(6) rhythm(2) gutter(12);
-    @include span(4 omega);
-    
-    .items, .other-questions, .themes {
-        background-color: #f7f7f7;
-        padding: rhythm(1) gutter(4);
-        border: 0;
-        @include trailer(2);
-        
-        & > *:first-of-type { 
-            margin-top: 0; 
-            padding-top: 0;
-        }
-        
-        & > *:last-of-type, .hTagcloud > ul { 
-            margin-bottom: 0; 
-            padding-bottom: 0;
-            border: 0;
-        }
-        
-        h3:last-of-type { @include trailer(.5); }
-    }
-    
-    .items { @include leader(.5); }
-    
-    .other-questions {
-        border-bottom: 0;
-
-        p { 
-            border-color: #ccc;
-            @include trailing-border(1px, 1, $base-font-size, solid); 
-        }
-    }
-    
-    ul {
-        border-bottom: 0;
-    }
-}
-
-.layout-geolocation-map,
-.layout-scavenger-hunt {
-    @include leader(0);
-    @include trailer();
-}
-
-.layout-file-text .fullsize {
-    @include trailer();
-    width: auto;
-}
-
-.layout-file-text .thumbnail {
-    margin-left: 0 !important;
-}
-
-/* @end */
-
-/* @group ----- People ----- */
-
-.people.alpha {
-    .persons {
-        padding: rhythm(3) 0; 
-        
-        h2 {
-            @include adjust-font-size-to(24px);
-            @include span(2);
-            @include prefix(4);
-            vertical-align: top;
-            background-color: transparent;
-            margin: 0;
-            padding-top: 0;
-        }
-    }
-    
-    .person {
-        @include span(7);
-        @include suffix(2);
-        float: right;
-        @include trailer();
-        
-        &:last-of-type { @include trailer(3); }        
-    }
-}
-
-.persons.images .person {
-    width: 15%;
-}
-
-.persons.images .image {
-    width: 95px;
-    /* -webkit-border-radius: 85px/130px;
-    -moz-border-radius: 85px/130px;
-    border-radius: 85px/130px; */
-}
-
-/* @end */
-
-/* @group ----- Events ----- */
-
-.items.event {
-    .items h2 {
-        @include adjust-font-size-to(24px);
-        @include span(2 alpha);
-        text-align: center;
-        padding: 10px;
-        font-size: 1.5 * $base-font-size;
-        line-height: 1.5 * $base-line-height;
-        @include padding-leader();
-    }
-    
-    .items .period:nth-of-type(2n) h2 {
-        background-color: transparent;
-    }
-    
-    .image {
-        margin: rhythm(1) gutter(6) rhythm(1) 0;
-    }
-    
-    .period {
-        background-color: #e7e7e7;
-        &:nth-of-type(2n) { background-color: #f7f7f7; }
-    }
-    
-    .event {
-        background-color: #fff;
-        @include span(10 omega);
-        padding: 0 2%;
-        border-bottom: 0;
-    }
-}
-
-#period-nav {
-    font-size: 16px;
-    padding: rhythm(.5) gutter(6);
-    max-width: span(12) - gutter(2);
-    
-    .sub-menu {
-        margin-top: 0;
-    }
-    
-    ul li:first-of-type, a {
-        line-height: 1.5 * $base-line-height;      
-    }
-}
-
-/* @end */
-
-/* @group ----- Themes ----- */
-
-.themes .theme-list {
-      -webkit-columns: 2;
-      -moz-columns: 2;
-}
-
-/* @end */
+/* @end group Navigation */
 
 /* @group ----- Items – Properties ----- */
 /* Mise en forme des propriétés des items, où qu’ils soient. */
@@ -458,72 +177,30 @@ footer img {
 	@include span(3 of 4);
 }
 
-/* @end Items – Common */
+/* @end group Items – Properties */
 
-/* @group ----- Items/Browse ----- */
+/* @group ----- Browse ----- */
 
-//.items.browse .item {
-.browse .resource-list {
+.resource-list {
 	padding-left:gutter(4);
-    .item img {
+    .resource img {
         margin-right: gutter(6);
     }
 }
 
-/* @end */
+/* @end group Browse */
 
 /* @group ----- Items/Show ----- */
 
 .media-list {
 	@include span(1 of 4 last);
 }
-/*.exploration-answer div[role=main],
-.items.show div[role=main] {
-    h1 {
-        @include trailer(2);
-    }
 
-    & > div, article {
-        @include prefix(1);
-        @include suffix(1);
-        @include span(8 alpha);
-    }
-    
-    & > aside {
-        @include prefix(0);
-        @include suffix(1);
-        @include span(4 omega);
-        
-        & > div {
-            display: block;
-        }
-        
-        img {
-            @include trailer();
-        }
-    }
-}
-
-.item-pagination { @include trailer(2); }
-
-.items.show .element-text {
-    display: block;
-}
-
-#mobile-content {
-    display: none;
-}*/
-/* @end Items/Show */
+/* @end group Items/Show */
 
 /* @group ----- Forms ----- */
-#advanced-search {
-/*	padding: rhythm();
-	&>div {
-		overflow: visible;
-		padding: gutter();
-		margin: 0 0 rhythm();
-	}*/
 
+#advanced-search {
 	.field {
 		display: flex;
 		flex-wrap: wrap;
@@ -555,9 +232,6 @@ footer img {
 
 	input, button, select {
 		border: 1px solid #e7e7e7;
-	}
-	input, select, button {
-		//À dupliquer pour #search-form
 		border-radius: 0;
 		height: rhythm(1.5);
 		margin: 0;
@@ -576,58 +250,5 @@ footer img {
 		@include span(7 of 10 last);
 	}
 }
-/* @end Forms */
 
-/* @group ----- Themes ----- */
-
-.search-result.item .description {
-    width: auto;
-    float: none;
-}
-
-.search-result .image {
-    @include trailer();
-}
-
-/* @end */
-
-/* @group ----- Map ----- */
-
-body {
-    height: auto;
-}
-
-.map div[role="main"] h1:first-of-type {
-    padding: rhythm(.25) 0;
-}
-
-.map #map {
-    min-height: rhythm(40);
-}
-
-#filters {
-    height: auto;
-}
-
-#filters div label {
-    width: 48%;
-    float: left;
-    
-    &:nth-of-type(2n) {
-        margin-left: 2%;
-    }
-}
-div#geolocation {
-    clear: none;
-}
-/* @end */
-
-/* @group ----- About ----- */
-
-.page div[role="main"] #content {
-    padding: rhythm(2) 0;
-    @include span(12);
-    @include prefix(1);
-    @include suffix(1);
-}
-/* @end */
+/* @end group Forms */
