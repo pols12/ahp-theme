@@ -21,8 +21,12 @@ $this->headScript()->appendScript(<<<'EOT'
 	});
 EOT
 );
-$shouldHaveTranscription = in_array($item->resourceClass()->term(),
-		explode(';', $this->themeSetting('properties')['transcriptedClasses']));
+$shouldHaveTranscription = $item->resourceClass() //may be NULL
+		? in_array(
+				$item->resourceClass()->term(),
+				explode(';', $this->themeSetting('properties')['transcriptedClasses'])
+			)
+		: false;
 ?>
 
 <?php echo $this->pageTitle($item->displayTitle(), 2, $item->displayResourceClassLabel()); ?>
