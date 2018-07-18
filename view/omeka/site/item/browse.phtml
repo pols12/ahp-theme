@@ -24,12 +24,14 @@ $filterBtn=(string) $this->hyperlink($this->translate('Filter'),
 	<div class="item-set-items">
 	<?php echo '<h3>'.$itemSet->itemCount().' '.$escape($this->translate('Items')) . '</h3>'; ?>
 <?php else: ?>
-	<?php echo $this->pageTitle($this->translate('Items'), 2),
+	<?php echo $this->pageTitle($this->translate('Items'), 2) ?>
+	<?php echo $this->searchFilters(); ?>
+	<?=
 	$filterBtn,
-	$this->pagination(); ?>
+	$this->pagination();
+	?>
 <?php endif; ?>
 
-<?php echo $this->searchFilters(); ?>
 <?php $this->trigger('view.browse.before'); ?>
 <ul class="resource-list">
 <?php
