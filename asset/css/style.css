@@ -608,19 +608,23 @@
     padding: 0 2.85714%;
   }
 
-  .browse .resource-list {
+  .resource-list {
     padding: 0;
   }
-  .browse .resource-list .item {
-    border-color: #e7e7e7;
-    border-bottom-width: 0.0625em;
-    border-bottom-style: solid;
-    padding-bottom: 1.4375em;
+  .resource-list .item {
     overflow: auto;
+    padding-bottom: 1.43em;
   }
-  .browse .resource-list .item img {
+  .resource-list .item img {
     float: left;
     margin-right: 4.34783%;
+  }
+  .resource-list h4 {
+    float: none;
+    margin: 0;
+  }
+  .resource-list .value {
+    overflow: auto;
   }
 
   .items + nav {
@@ -630,6 +634,7 @@
     overflow: auto;
   }
 
+  /* @end Items/Browse */
   /* @group ----- Browse an item set ----- */
   .metadata {
     overflow: hidden;
@@ -694,16 +699,13 @@
     content: " : ";
   }
 
-  #item-linked h4, .resource-list h4 {
-    float: none;
-  }
-  #item-linked .value, .resource-list .value {
+  #item-linked .value {
     overflow: auto;
   }
-  #item-linked table, .resource-list table {
+  #item-linked table {
     margin: 1em;
   }
-  #item-linked table, #item-linked table tr, #item-linked table td, #item-linked table th, .resource-list table, .resource-list table tr, .resource-list table td, .resource-list table th {
+  #item-linked table, #item-linked table tr, #item-linked table td, #item-linked table th {
     border: 1px solid black;
     padding: 0.1em 0.2em;
   }

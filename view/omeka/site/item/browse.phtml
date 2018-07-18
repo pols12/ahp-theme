@@ -39,9 +39,8 @@ foreach ($items as $item):
 ?>
     <li class="item resource">
         <h4><?php echo $item->link($heading); ?></h4>
-		<?php echo $item->linkRaw($this->thumbnail($item, 'medium')); ?>
         <?php if ($date = $item->value('dcterms:date')): ?>
-				<h5 class="field-name">Date</h5> <div class="date"><?= $date; ?></div>
+				<h5 class="field-name">Date</h5> <div class="value date"><?= $date; ?></div>
         <?php endif; ?>
 		<?php if ($body): ?>
 				<h5 class="field-name">Description</h5> <div class="value description"><?= $body; ?></div>

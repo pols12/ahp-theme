@@ -550,19 +550,23 @@ footer {
     padding: 0 gutter(6);
 }
 
-//.items.browse .item {
-.browse .resource-list {
-	padding:0;
+.resource-list {
+	padding: 0;
 	.item {
-		//padding: 0 gutter(6);
-		border-color: #e7e7e7;
-		@include trailing-border(1px, 1, $base-font-size, solid);
 		overflow: auto;
+		padding-bottom: 1.43em;
 
 		img {
 			float: left;
 			margin-right: gutter(4);
 		}
+	}
+	h4 {
+		float: none;
+		margin: 0;
+	}
+	.value {
+		overflow: auto;
 	}
 }
 
@@ -570,6 +574,8 @@ footer {
     @include box-shadow(rgba(0, 0, 0, 0.1) 0 -5px 20px);
     overflow: auto;
 }
+
+/* @end Items/Browse */
 
 /* @group ----- Browse an item set ----- */
 
@@ -639,10 +645,7 @@ footer {
 	}
 }
 
-#item-linked, .resource-list {
-	h4 {
-		float:none;
-	}
+#item-linked {
 	.value {
 		overflow: auto;
 	}
@@ -654,8 +657,8 @@ footer {
 			padding: 0.1em 0.2em;
 		}
 	}
-	
 }
+
 .media-element {
 	padding: rhythm(.4) gutter() rhythm(.4) rhythm(1.5);
 	margin: 0 gutter() rhythm() gutter();
