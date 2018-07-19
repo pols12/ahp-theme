@@ -1,15 +1,27 @@
 <?php
 $escape = $this->plugin('escapeHtml');
 $labelInfo = $this->setting('property_label_information');
-$settings = $this->themeSetting('properties')['letter'];
 
-if(isset($shouldDisplayFront)) { //For item/show view
-	$frontTerms = array_flip([$settings['publishedIn']]);
-	if(isset($repeatTop) && $repeatTop || !$shouldDisplayFront)
-		$frontTerms += array_flip([$settings['sender'], $settings['addressee'], $settings['date']]);
-	$values = $shouldDisplayFront
-			? array_intersect_key($values, $frontTerms)
-			: array_diff_key($values, $frontTerms);
+$itemType = isset($itemClass) ? strtolower(explode(':', $itemClass)[1]) : 'default';
+$settings = isset($this->themeSetting('properties')[$itemType])
+		? $this->themeSetting('properties')[$itemType]
+		: $this->themeSetting('properties')['default'];
+
+if(isset($display)) { //For item/show view
+	$terms = [];
+	switch ($display) {
+		case 'other':
+		case 'front':
+			$terms += array_flip(explode(';', $settings['front']));
+			if(isset($repeatTop) && !$repeatTop) break;
+		case 'top':
+			$terms += array_flip(explode(';', $settings['top']));
+			break;
+	}
+
+	$values = $display !== 'other'
+		? array_intersect_key($values, $terms)
+		: array_diff_key($values, $terms);
 } ?>
 <?php foreach ($values as $term => $propertyData): ?>
     <div class="property">
