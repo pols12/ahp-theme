@@ -2,15 +2,21 @@
 use Omeka\Api\Representation\ItemRepresentation;
 use Omeka\Api\Representation\ValueRepresentation;
 $escape = $this->plugin('escapeHtml');
+$link = $this->plugin('hyperlink');
 $settings = $this->themeSetting('properties')['letter'];
 /* @var $resource ItemRepresentation */ 
 
-$sender = $resource->value($settings['sender']) instanceof ValueRepresentation
-		? $resource->value($settings['sender'])->valueResource()->displayTitle()
-		: $resource->value($settings['sender']);
-$recipient = $resource->value($settings['addressee']) instanceof ValueRepresentation
-		? $resource->value($settings['addressee'])->valueResource()->displayTitle()
-		: $resource->value($settings['addressee']);
+$sender = ($senderAsVal = $resource->value($settings['sender']))
+		instanceof ValueRepresentation
+		? $link($escape($senderAsVal->valueResource()->displayTitle()),
+				$senderAsVal->valueResource()->url(), [])
+		: $senderAsVal;
+
+$recipient = ($recipientAsVal = $resource->value($settings['addressee']))
+		instanceof ValueRepresentation
+		? $link($escape($recipientAsVal->valueResource()->displayTitle()),
+				$recipientAsVal->valueResource()->url(), [])
+		: $recipientAsVal;
 ?>
 
 <tr class="<?= $resource->resourceName(); ?> resource">
