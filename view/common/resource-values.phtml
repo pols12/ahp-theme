@@ -27,6 +27,16 @@ if(isset($shouldDisplayFront)) { //For item/show view
         </h4>
         <div class="values">
         <?php foreach ($propertyData['values'] as $value): ?>
+			<?php
+			if($value->lang() //if lang is set
+					&& 'fr' !== strtolower($value->lang()) //but not french
+					&& in_array('fr', //whereas french exist
+							array_map(
+									function($v){ return $v->lang(); },
+									$propertyData['values']))
+			)
+				continue; //do not display this value
+			?>
             <?php
             $class = 'value';
             if ('resource' == $value->type()) {
@@ -38,7 +48,7 @@ if(isset($shouldDisplayFront)) { //For item/show view
             ?>
             <div class="<?php echo $class; ?>" lang="<?php echo $escape($value->lang()); ?>">
                 <?php if ($language = $value->lang()): ?>
-                <span class="language"><?php echo $language; ?></span>
+                <span class="language">(<?php echo $language; ?>)</span>
                 <?php endif; ?>
                 <?php echo $value->asHtml(); ?>
             </div>
