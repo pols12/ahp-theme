@@ -26,6 +26,7 @@ if(isset($shouldDisplayFront)) { //For item/show view
         <?php endif; ?>
         </h4>
         <div class="values">
+		<?php $valueNumber = 1; ?>
         <?php foreach ($propertyData['values'] as $value): ?>
 			<?php
 			if($value->lang() //if lang is set
@@ -50,7 +51,8 @@ if(isset($shouldDisplayFront)) { //For item/show view
                 <?php if ($language = $value->lang()): ?>
                 <span class="language">(<?php echo $language; ?>)</span>
                 <?php endif; ?>
-                <?php echo $value->asHtml(); ?>
+                <?php echo $value->asHtml(); 
+				if($valueNumber++ < count($propertyData['values'])) echo ' ;'; ?>
             </div>
         <?php endforeach; ?>
 		</div>

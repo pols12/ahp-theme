@@ -415,7 +415,7 @@
     display: inline;
   }
   .property .value, .filter .value {
-    display: block;
+    display: inline;
   }
   .property .value img, .filter .value img {
     height: 16px;
