@@ -4,7 +4,8 @@
 <?php echo $this->pageTitle($this->translate('Item sets'), 2); ?>
 
 <?php echo $this->searchFilters(); ?>
-<?php echo $this->hyperlink($this->translate('Advanced search'), $this->url(null, ['action' => 'search'], true), ['class' => 'advanced-search button']); ?>
+<?php $query = $this->params()->fromQuery(); ?>
+<?php echo $this->hyperlink($this->translate('Filter differently'), $this->url(null, ['action' => 'search'], ['query' => $query], true), ['class' => 'advanced-search button']); ?>
 <?php echo $this->pagination(); ?>
 <?php $this->trigger('view.browse.before'); ?>
 <ul class="resource-list">

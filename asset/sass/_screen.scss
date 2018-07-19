@@ -407,9 +407,6 @@ footer {
 }
 
 #content .advanced-search { //Bouton "Filtrer"
-	display:block;
-	width: 5em;
-	margin: 0 auto rhythm();
 	text-align: center;
 	line-height: rhythm(0.7);
 }
@@ -418,7 +415,7 @@ footer {
     background-color: #fff;
     @include clearfix;
     padding: rhythm(0.5) gutter(6);
-	margin: 0 auto;
+	margin: 2em auto 0;
     height: rhythm(3);
 	max-width: 24em;
 	
