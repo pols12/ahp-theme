@@ -54,6 +54,10 @@ input, button, select {
 q:lang(fr) { quotes: "« " " »"}
 q:lang(en) { quotes: "“" "”"}
 
+table, tr, td, th {
+	border: 1px solid;
+}
+
 /* @end group Generic HTML elements */
 
 /* @group ----- Global classes ----- */

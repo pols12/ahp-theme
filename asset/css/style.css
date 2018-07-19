@@ -34,6 +34,20 @@
     max-width: 250px;
   }
 
+  /* @group ----Search page------ */
+  .search-results-count {
+    width: 80%;
+  }
+  .search-results-count .pagination {
+    margin-left: auto;
+    margin-top: 1em;
+  }
+
+  .search-results h3 {
+    clear: both;
+  }
+
+  /* @end group Search page */
   /* @group ----- Generic HTML elements ----- */
   html, body {
     margin: 0;
@@ -96,6 +110,10 @@
 
   q:lang(en) {
     quotes: "“" "”";
+  }
+
+  table, tr, td, th {
+    border: 1px solid;
   }
 
   /* @end group Generic HTML elements */
