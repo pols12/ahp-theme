@@ -1,0 +1,20 @@
+<?php
+use Omeka\Api\Representation\ItemRepresentation;
+use Omeka\Api\Representation\ValueRepresentation;
+$escape = $this->plugin('escapeHtml');
+$link = $this->plugin('hyperlink');
+$settings = $this->themeSetting('properties')['report'];
+/* @var $resource ItemRepresentation */ 
+
+$author = ($valueCreator = $resource->value($settings['author']))
+		instanceof ValueRepresentation
+	? $link($escape($valueCreator->valueResource()->displayTitle()),
+			$valueCreator->valueResource()->url(), [])
+	: $valueCreator;
+?>
+
+<tr class="<?= $resource->resourceName(); ?> resource">
+	<td><?= $author ?></td>
+	<td><?= $resource->link($resource->value($settings['title'])); ?></td>
+	<td><?= $resource->value($settings['date']); ?></td>
+</tr>

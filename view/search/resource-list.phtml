@@ -1,8 +1,15 @@
 <?php $results = $response->getResults($resourceName);
 $form=$this->searchForm()->getForm();
-$ehpForm = get_class($form) == \EhpSearchForm\Form\LetterForm::class
-		? 'letter'
-		: 'biblio'; ?>
+switch(get_class($form)){
+		case \EhpSearchForm\Form\LetterForm::class :
+			$ehpForm = 'letter';
+			break;
+		case \EhpSearchForm\Form\ReportForm::class :
+			$ehpForm = 'report';
+			break;
+		default:
+			$ehpForm = 'biblio';
+} ?>
 <?php if (!empty($results)): ?>
     <h3><?php echo $title; ?></h3>
     <div class="resource-list"><table>
