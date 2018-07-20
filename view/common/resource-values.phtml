@@ -6,7 +6,9 @@ if(isset($itemClass)){
 	$biblioTypes = $this->api()->search('search_pages', ['form' => 'Biblio'])
 			->getContent()[0]->settings()['form']['resource_classes'];
 	
-	if(in_array($itemClass, $biblioTypes))
+	$biblioClasses = array_map(function($v){return explode('→', $v)[0];}, $biblioTypes);
+	
+	if(in_array($itemClass, $biblioClasses))
 		$itemType = 'biblio';
 	else
 		$itemType = strtolower(explode(':', $itemClass)[1]);
