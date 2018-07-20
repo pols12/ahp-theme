@@ -2,7 +2,17 @@
 $escape = $this->plugin('escapeHtml');
 $labelInfo = $this->setting('property_label_information');
 
-$itemType = isset($itemClass) ? strtolower(explode(':', $itemClass)[1]) : 'default';
+if(isset($itemClass)){
+	$biblioTypes = $this->api()->search('search_pages', ['form' => 'Biblio'])
+			->getContent()[0]->settings()['form']['resource_classes'];
+	
+	if(in_array($itemClass, $biblioTypes))
+		$itemType = 'biblio';
+	else
+		$itemType = strtolower(explode(':', $itemClass)[1]);
+}
+else $itemType = 'default';
+
 $settings = isset($this->themeSetting('properties')[$itemType])
 		? $this->themeSetting('properties')[$itemType]
 		: $this->themeSetting('properties')['default'];
