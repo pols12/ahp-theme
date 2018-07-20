@@ -4,14 +4,17 @@
     </div>
     <div class="search-results-sort">
         <form>
-            <?php
+            <?php if ($sortOptions):
                 $sortSelect = new Zend\Form\Element\Select('sort');
+                $sortOptions = array_map([$this, 'translate'], $sortOptions);
                 $sortSelect->setValueOptions($sortOptions);
                 $sortSelect->setValue($query->getSort());
                 $sortSelect->setLabel($this->translate('Sort by'));
-            ?>
+            endif; ?>
+            <?php if (!empty($sortSelect)): ?>
             <?php echo $this->formLabel($sortSelect); ?>
             <?php echo $this->formSelect($sortSelect); ?>
+            <?php endif; ?>
         </form>
     </div>
 </div>
