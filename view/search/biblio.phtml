@@ -19,11 +19,13 @@ $journal = ( ($issueVal = $resource->value($settings['issue']))
 			)
 		? $journalVal->valueResource()->displayTitle()
 		: '';
+
+$dateOwner = $journal ? $issueVal->valueResource() : $resource;
 ?>
 
 <tr class="<?= $resource->resourceName(); ?> resource">
 	<td><?= $author ?></td>
 	<td><?= $resource->link($resource->value($settings['title'])); ?></td>
-	<td><?= $resource->value($settings['date']); ?></td>
+	<td><?= $dateOwner->value($settings['date']); ?></td>
 	<td><?= $journal; ?></td>
 </tr>
