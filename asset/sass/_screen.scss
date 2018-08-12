@@ -281,7 +281,7 @@ nav ul {
 		
 		@include background-size(cover);
 		&:nth-of-type(5) { //varia
-			background: url('../img/livres.jpg') no-repeat center;
+			background: url('../img/menu_elt_5.jpg') no-repeat center;
 
 			&:after {
 				@include background-image(linear-gradient(65deg, rgba(0, 0, 0, .8), rgba(208, 42, 204, 0.4)));
@@ -289,7 +289,7 @@ nav ul {
 		}
 		
 		&:nth-of-type(4) { //correspondance
-			background: url('../img/lettre.jpg') no-repeat center;
+			background: url('../img/menu_elt_4.jpg') no-repeat center;
 
 			&:after {
 				@include background-image(linear-gradient(195deg, rgba(0, 0, 0, 0.8), rgba(217, 196, 20, 0.4)));
@@ -297,7 +297,7 @@ nav ul {
 		}
 
 		&:nth-of-type(3) { //Publications
-			background: url('../img/livres.jpg') no-repeat top;
+			background: url('../img/menu_elt_3.jpg') no-repeat top;
 
 			&:after {
 				@include background-image(linear-gradient(255deg, rgba(0, 0, 0, 0.8), rgba(43, 137, 217, 0.4)));
@@ -305,7 +305,7 @@ nav ul {
 		}
 
 		&:nth-of-type(2) { //Archives
-			background: url('../img/archives.jpg') no-repeat center center;
+			background: url('../img/menu_elt_2.jpg') no-repeat center center;
 
 			&:after {
 				@include background-image(linear-gradient(15deg, rgba(0, 0, 0, 0.8), rgba(255, 51, 0, 0.4)));
@@ -313,7 +313,7 @@ nav ul {
 		}
 		
 		&:first-of-type { //Accueil
-			background: url('../img/jeunes.jpg') no-repeat center center;
+			background: url('../img/menu_elt_1.jpg') no-repeat center center;
 
 			&:after {
 				@include background-image(linear-gradient(135deg, rgba(0, 0, 0, .8), rgba(33, 201, 0, 0.4)));
